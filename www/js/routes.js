@@ -36,11 +36,14 @@ angular.module('app.routes', [])
         'side-menu21': {
           templateUrl: 'templates/page2.html'
         }
-      }
-    })
-        
+      },
+      onEnter: function($state, Auth) {
+        if(!Auth.isLoggedIn()) {
+              $state.go('page1');
+           }
+        }
       
-    
+    }) 
       
         
     .state('side-menu21.page3', {
@@ -51,8 +54,6 @@ angular.module('app.routes', [])
         }
       }
     })
-        
-      
     
       
         
@@ -61,46 +62,32 @@ angular.module('app.routes', [])
       templateUrl: 'templates/page4.html'
     })
         
-      
-    
-      
         
     .state('page6', {
       url: '/pageScore1',
       templateUrl: 'templates/page6.html'
     })
-        
-      
     
-      
         
     .state('page7', {
       url: '/pageScore2',
       templateUrl: 'templates/page7.html'
     })
         
-      
-    
-      
         
     .state('page8', {
       url: '/page8',
       templateUrl: 'templates/page8.html'
     })
         
-      
-    
-      
         
     .state('page9', {
       url: '/pageNewScore',
-      templateUrl: 'templates/page9.html'
+      templateUrl: 'templates/page9.html',
+      contrller:'NewScoreCtrl'
     })
         
       
-    
-      
-        
     .state('side-menu21.page10', {
       url: '/pageAbout',
       views: {
@@ -110,9 +97,6 @@ angular.module('app.routes', [])
       }
     })
         
-      
-    
-      
         
     .state('side-menu21.page12', {
       url: '/pageRecords',

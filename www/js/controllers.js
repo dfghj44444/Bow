@@ -28,7 +28,7 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('page9Ctrl', function($scope) {
+.controller('NewScoreCtrl', function($scope) {
 
 })
    
