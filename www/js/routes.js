@@ -84,7 +84,7 @@ angular.module('app.routes', [])
     .state('page9', {
       url: '/pageNewScore',
       templateUrl: 'templates/page9.html',
-      contrller:'NewScoreCtrl'
+      controller:'NewScoreCtrl'
     })
         
       
