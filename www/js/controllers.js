@@ -29,12 +29,18 @@ angular.module('app.controllers', [])
 })
    
 .controller('NewScoreCtrl', function($scope) {
-	
+	$scope.count = 0;
     $scope.recordNew = function() {
+	//var resultObject={'ten':4,'nine':3,'eight':5,'total':107};
+	//window.localStorage.setItem('score101', JSON.stringify(testObject));
+    //var retrievedObject = localStorage.getItem('testObject');
+    //console.log('retrievedObject: ', JSON.parse(retrievedObject));
+	
 	window.localStorage['name'] = 'Max';
 
 	var name = window.localStorage['name'] || 'you';
-	alert('Hello, ' + name);
+	$scope.count += 1;
+	alert('Hello, ' + $scope.count);
     }
 })
    
