@@ -29,12 +29,13 @@ angular.module('app.controllers', [])
 })
    
 .controller('NewScoreCtrl', function($scope) {
+	
     $scope.recordNew = function() {
-             //   console.log("拨打:");
-            alert("2");
-            //$scope.tab = item;
-            //Your other logic for soothe
-            }
+	window.localStorage['name'] = 'Max';
+
+	var name = window.localStorage['name'] || 'you';
+	alert('Hello, ' + name);
+    }
 })
    
 .controller('page10Ctrl', function($scope) {
@@ -42,12 +43,7 @@ angular.module('app.controllers', [])
 })
    
 .controller('page12Ctrl', function($scope) {
-            $scope.record = function() {
-     
-            alert("2");
-            //$scope.tab = item;
-            //Your other logic for soothe
-            };
+
 
 })
  
