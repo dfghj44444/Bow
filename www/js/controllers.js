@@ -29,7 +29,9 @@ angular.module('app.controllers', [])
 })
    
 .controller('NewScoreCtrl', function($scope) {
-	$scope.count = 0;
+	if(window.localStorage['count'] == null)
+		window.localStorage['count'] = 0;
+	$scope.count = window.localStorage['count'];
     $scope.recordNew = function() {
 	//var resultObject={'ten':4,'nine':3,'eight':5,'total':107};
 	//window.localStorage.setItem('score101', JSON.stringify(testObject));
@@ -39,7 +41,7 @@ angular.module('app.controllers', [])
 	window.localStorage['name'] = 'Max';
 
 	var name = window.localStorage['name'] || 'you';
-	$scope.count += 1;
+	$scope.count++;
 	alert('Hello, ' + $scope.count);
     }
 })
