@@ -92,9 +92,11 @@ angular.module('app.routes', [])
       url: '/pageAbout',
       views: {
         'side-menu21': {
-          templateUrl: 'templates/page10.html'
+          templateUrl: 'templates/page10.html',
+		  controller:'page10Ctrl'
         }
-      }
+      },
+	
     })
         
         
@@ -102,9 +104,11 @@ angular.module('app.routes', [])
       url: '/pageRecords',
       views: {
         'side-menu21': {
-          templateUrl: 'templates/page12.html'
+          templateUrl: 'templates/page12.html',
+		  controller:'page12Ctrl'
         }
       }
+	  
     })
         
       
