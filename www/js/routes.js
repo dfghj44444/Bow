@@ -108,7 +108,7 @@ angular.module('app.routes', [])
 		  controller:'page12Ctrl'
         }
       }
-	  
+	 // abstract: true;
     })
         
       

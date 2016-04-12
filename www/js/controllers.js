@@ -28,7 +28,7 @@ angular.module('app.controllers', [ ])
 
 })
    
-.controller('NewScoreCtrl', function($scope) {
+.controller('NewScoreCtrl', function($scope,$state) {
 
 	$scope.count = window.localStorage['count'] || 0;
     $scope.recordNew = function() {
@@ -40,6 +40,7 @@ angular.module('app.controllers', [ ])
 	$scope.count++;
 	window.localStorage['count']=$scope.count;
 	//alert('Hello, ' + $scope.count);
+	$state.go('side-menu21.page12');
     }
 })
    
@@ -57,7 +58,7 @@ for(var i =0;i<8;i++){
 	$scope.labels.unshift(date);
 }
 
-$scope.series = [' 环数 '," 稳定性 "];
+$scope.series = [' 环数 ','散布(越小越好)'];
 $scope.data = [[],[]];
 var storage = window.localStorage;
 for (var i=0, len = storage.length; i < len; i++)
@@ -66,9 +67,9 @@ for (var i=0, len = storage.length; i < len; i++)
     var value = storage.getItem(key);
 	if(key.indexOf("score")!= -1)
 	{
-	JSON.parse(value);
-    console.log(key + "=" + value['count']);
-	$scope.data[0].push(110);
+	var result = JSON.parse(value);
+    console.log(key + "=" + result['total']);
+	$scope.data[0].push(result['total']);
 	}
 	
 	
