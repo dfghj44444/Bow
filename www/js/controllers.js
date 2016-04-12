@@ -28,20 +28,46 @@ angular.module('app.controllers', [ ])
 
 })
    
-.controller('NewScoreCtrl', function($scope,$state) {
+.controller('NewScoreCtrl', function($scope,$state, $timeout) {
 
 	$scope.count = window.localStorage['count'] || 0;
+	
     $scope.recordNew = function() {
-	var resultObject={'ten':4,'nine':3,'eight':5,'total':107};
-	window.localStorage.setItem('score'+$scope.count, JSON.stringify(resultObject));
-    //var retrievedObject = localStorage.getItem('testObject');
-    //console.log('retrievedObject: ', JSON.parse(retrievedObject));
+		var resultObject={'ten':4,'nine':3,'eight':5,'total':107};
+		window.localStorage.setItem('score'+$scope.count, JSON.stringify(resultObject));
+		//var retrievedObject = localStorage.getItem('testObject');
+		//console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
-	$scope.count++;
-	window.localStorage['count']=$scope.count;
-	//alert('Hello, ' + $scope.count);
-	$state.go('side-menu21.page12');
+		$scope.count++;
+		window.localStorage['count']=$scope.count;
+		//alert('Hello, ' + $scope.count);
+		$state.go('side-menu21.page12');
     }
+	
+
+    $scope.data = { 'volume' : '5' };
+    var timeoutId = null;
+	$scope.$watch('data.volume', function() {
+        
+        console.log('Has changed');
+        
+        if(timeoutId !== null) {
+            console.log('Ignoring this movement');
+            return;
+        }
+        
+        console.log('Not going to ignore this one');
+        timeoutId = $timeout( function() {
+            
+            console.log('It changed recently!');
+            
+            $timeout.cancel(timeoutId);
+            timeoutId = null;
+            
+            // Now load data from server 
+        }, 1000); 
+              
+    });   
 })
    
 .controller('page10Ctrl', function($scope) {
