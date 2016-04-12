@@ -33,13 +33,13 @@ angular.module('app.controllers', [ ])
 	$scope.count = window.localStorage['count'] || 0;
     $scope.recordNew = function() {
 	var resultObject={'ten':4,'nine':3,'eight':5,'total':107};
-	window.localStorage.setItem('score'+$scope.count, JSON.stringify(testObject));
+	window.localStorage.setItem('score'+$scope.count, JSON.stringify(resultObject));
     //var retrievedObject = localStorage.getItem('testObject');
     //console.log('retrievedObject: ', JSON.parse(retrievedObject));
-	
-	var name = window.localStorage['name'] || 'you';
+
 	$scope.count++;
-	alert('Hello, ' + $scope.count);
+	window.localStorage['count']=$scope.count;
+	//alert('Hello, ' + $scope.count);
     }
 })
    
@@ -49,12 +49,30 @@ alert(1);
    
 .controller('page12Ctrl', function($scope) {
 
-$scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-$scope.series = ['Series A', 'Series B'];
-$scope.data = [
-[65, 59, 80, 81, 56, 55, 40],
-[28, 48, 40, 19, 86, 27, 90]
-];
+$scope.labels = [];
+var myDate = new Date();
+for(var i =0;i<8;i++){
+	var date = myDate.getMonth()+"月";
+	date += (parseInt(myDate.getDate()-i))+"日";
+	$scope.labels.unshift(date);
+}
+
+$scope.series = [' 环数 '," 稳定性 "];
+$scope.data = [[],[]];
+var storage = window.localStorage;
+for (var i=0, len = storage.length; i < len; i++)
+{ 
+    var key = storage.key(i);
+    var value = storage.getItem(key);
+	if(key.indexOf("score")!= -1)
+	{
+	JSON.parse(value);
+    console.log(key + "=" + value['count']);
+	$scope.data[0].push(110);
+	}
+	
+	
+ } 
 
 })
  
