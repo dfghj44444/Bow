@@ -87,7 +87,12 @@ angular.module('app.controllers', [ ])
 			$scope.totalScore = sum;
 			$scope.scoreText = "环"
 		}
-	}
+    };
+            
+    $scope.onScoreChange=function() {
+           // var input = angular.element(by.model('ctrlInputScore'));
+        $scope.totalScore=document.getElementById('ctrlInputScore').value ;
+    };
 	
 })
    
@@ -113,11 +118,11 @@ var storage = window.localStorage;
 			
 		for (var i=0, len = storedScores.length; i < len; i++)
 		{ 
-			var value = storedScores[i];
+			var result = storedScores[i];
 
-			console.log(key + "=" + result['total']);
-			$scope.data[0].push(result['total']);
+			console.log( "=" + result['total']);
+			$scope.data[0].push(parseInt(result['total']));
 		} 	
 	}  
 })
- 
+

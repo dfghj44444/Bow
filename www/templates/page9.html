@@ -6,7 +6,7 @@
                 <div class="item item-body">
                     <form class="list">
                         <label class="item item-input">
-                            <input type="text" value="{{totalScore}}{{scoreText}}" placeholder="0环(如果你不想逐项纪录,可以在这里手动输入总成绩)">
+                            <input type="text" value="{{totalScore}}{{scoreText}}" placeholder="0环(如果你不想逐项纪录,可以在这里手动输入总成绩)"  ng-model="totalScore" ng-change="onScoreChange()" id="ctrlInputScore">
                         </label>
                     </form>
                 </div>
