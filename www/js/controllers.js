@@ -69,19 +69,20 @@ angular.module('app.controllers', [ ])
 	{ id: '1',volume:'0' },
 	{ id: '0',volume:'0' }
 	];
-    //$scope.data = { 'volume' : '0' };
-    var timeoutId = null;
-	$scope.$watch('item.volume', function($item) {
-        
-        console.log('Has changed');
-        
-        if(timeoutId !== null) {
-            console.log('Ignoring this movement');
-            return;
-        }
-        $scope.totalScore=120;
-        console.log('Not going to ignore this one');  
-    });   
+
+	$scope.setLevelText = function() {
+		 
+		var sum = 0;
+		for( var i = 0; i < $scope.items.length; i++ ){
+			sum += parseInt( $scope.items[i].volume)*parseInt( $scope.items[i].id); //don't forget to add the base
+		}
+		if(sum>0){
+			$scope.totalScore = sum;
+			$scope.scoreText = "环"
+		}
+			
+		
+	}
 	
 })
    
@@ -114,7 +115,7 @@ for (var i=0, len = storage.length; i < len; i++)
 	}
 	
 	
- } 
+} 
 
 })
  

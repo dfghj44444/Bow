@@ -6,14 +6,14 @@
                 <div class="item item-body">
                     <form class="list">
                         <label class="item item-input">
-                            <input type="text" value="{{totalScore}}" placeholder="0环(如果你不想逐项纪录,可以在这里手动输入总成绩)">
+                            <input type="text" value="{{totalScore}}{{scoreText}}" placeholder="0环(如果你不想逐项纪录,可以在这里手动输入总成绩)">
                         </label>
                     </form>
                 </div>
             </div>
 	
             <ion-item class="range range-positive" ng-repeat="item in items" item="item" >
-                <input type="range" ng-model="item.volume" value="0" min="0" max="12"><font  color="blue">{{item.id}}环*{{item.volume}} ={{ item.id*item.volume}}</font>
+                <input type="range" ng-model="item.volume" ng-change="setLevelText()" value="0" min="0" max="12"><font  color="blue">{{item.id}}环*{{item.volume}} ={{ item.id*item.volume}}</font>
             </ion-item>
 	
         </form>
