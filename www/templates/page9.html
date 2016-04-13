@@ -6,45 +6,18 @@
                 <div class="item item-body">
                     <form class="list">
                         <label class="item item-input">
-                            <input type="text" placeholder="0环(如果你不想逐项纪录,可以在这里手动输入总成绩)">
+                            <input type="text" value="{{totalScore}}" placeholder="0环(如果你不想逐项纪录,可以在这里手动输入总成绩)">
                         </label>
                     </form>
                 </div>
             </div>
-            <ion-item class="range range-positive">十环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume"><p>{{data.volume*10}}</p>
+	
+            <ion-item class="range range-positive" ng-repeat="item in items" item="item" >
+                <input type="range" ng-model="item.volume" value="0" min="0" max="12"><font  color="blue">{{item.id}}环*{{item.volume}} ={{ item.id*item.volume}}</font>
             </ion-item>
-            <ion-item class="range range-positive">九环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">八环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">七环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">六环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">五环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">四环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">三环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">二环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">一环＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
-            <ion-item class="range range-positive">脱靶＊0
-                <input type="range" value="0" min="0" max="12" ng-model="data.volume">
-            </ion-item>
+	
         </form>
         <button id="page9-button4" type="button" class="button button-stable  button-block" ng-click="recordNew()" >记录完成</button>
+		  
     </ion-content>
 </ion-view>

@@ -28,12 +28,24 @@ angular.module('app.controllers', [ ])
 
 })
    
-.controller('NewScoreCtrl', function($scope,$state, $timeout) {
+.controller('NewScoreCtrl', function($scope,$state) {
 
 	$scope.count = window.localStorage['count'] || 0;
 	
     $scope.recordNew = function() {
-		var resultObject={'ten':4,'nine':3,'eight':5,'total':107};
+		var resultObject={
+			'ten':$scope.items[0].volume,
+			'nine':$scope.items[1].volume,
+			'eight':$scope.items[2].volume,
+			'seven':$scope.items[3].volume,
+			'six':$scope.items[4].volume,
+			'five':$scope.items[5].volume,
+			'four':$scope.items[6].volume,
+			'three':$scope.items[7].volume,
+			'two':$scope.items[8].volume,
+			'one':$scope.items[9].volume,
+			'zero':$scope.items[10].volume,
+			'total':$scope.totalScore|0};
 		window.localStorage.setItem('score'+$scope.count, JSON.stringify(resultObject));
 		//var retrievedObject = localStorage.getItem('testObject');
 		//console.log('retrievedObject: ', JSON.parse(retrievedObject));
@@ -44,10 +56,22 @@ angular.module('app.controllers', [ ])
 		$state.go('side-menu21.page12');
     }
 	
-
-    $scope.data = { 'volume' : '5' };
+	$scope.items = [
+	{ id: '10',volume:'0' },
+	{ id: '9',volume:'0' },
+	{ id: '8',volume:'0' },
+	{ id: '7',volume:'0' },
+	{ id: '6',volume:'0' },
+	{ id: '5',volume:'0' },
+	{ id: '4',volume:'0' },
+	{ id: '3',volume:'0' },
+	{ id: '2',volume:'0' },
+	{ id: '1',volume:'0' },
+	{ id: '0',volume:'0' }
+	];
+    //$scope.data = { 'volume' : '0' };
     var timeoutId = null;
-	$scope.$watch('data.volume', function() {
+	$scope.$watch('item.volume', function($item) {
         
         console.log('Has changed');
         
@@ -55,19 +79,10 @@ angular.module('app.controllers', [ ])
             console.log('Ignoring this movement');
             return;
         }
-        
-        console.log('Not going to ignore this one');
-        timeoutId = $timeout( function() {
-            
-            console.log('It changed recently!');
-            
-            $timeout.cancel(timeoutId);
-            timeoutId = null;
-            
-            // Now load data from server 
-        }, 1000); 
-              
+        $scope.totalScore=120;
+        console.log('Not going to ignore this one');  
     });   
+	
 })
    
 .controller('page10Ctrl', function($scope) {
