@@ -46,7 +46,14 @@ angular.module('app.controllers', [ ])
 			'one':$scope.items[9].volume,
 			'zero':$scope.items[10].volume,
 			'total':$scope.totalScore|0};
-		window.localStorage.setItem('score'+$scope.count, JSON.stringify(resultObject));
+			
+		var storedScores=[];
+		if(localStorage.getItem("scores")!=null)
+		    storedScores = JSON.parse(window.localStorage.getItem("scores"));
+
+		storedScores.push(resultObject);
+
+		window.localStorage.setItem('scores', JSON.stringify(storedScores));
 		//var retrievedObject = localStorage.getItem('testObject');
 		//console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
@@ -80,8 +87,6 @@ angular.module('app.controllers', [ ])
 			$scope.totalScore = sum;
 			$scope.scoreText = "环"
 		}
-			
-		
 	}
 	
 })
@@ -103,19 +108,16 @@ for(var i =0;i<8;i++){
 $scope.series = [' 环数 ','散布(越小越好)'];
 $scope.data = [[],[]];
 var storage = window.localStorage;
-for (var i=0, len = storage.length; i < len; i++)
-{ 
-    var key = storage.key(i);
-    var value = storage.getItem(key);
-	if(key.indexOf("score")!= -1)
-	{
-	var result = JSON.parse(value);
-    console.log(key + "=" + result['total']);
-	$scope.data[0].push(result['total']);
-	}
-	
-	
-} 
+		if(localStorage.getItem("scores")!=null){
+			var storedScores = JSON.parse(localStorage.getItem("scores"));
+			
+		for (var i=0, len = storedScores.length; i < len; i++)
+		{ 
+			var value = storedScores[i];
 
+			console.log(key + "=" + result['total']);
+			$scope.data[0].push(result['total']);
+		} 	
+	}  
 })
  
