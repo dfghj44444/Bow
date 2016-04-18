@@ -116,9 +116,12 @@ var storage = window.localStorage;
 		if(localStorage.getItem("scores")!=null){
 			var storedScores = JSON.parse(localStorage.getItem("scores"));
 			
-		for (var i=0, len = storedScores.length; i < len; i++)
+		for (var i=0, len = storedScores.length; i < len && i<10; i++)
 		{ 
-			var result = storedScores[i];
+			var index  =i;
+			if(len>10)
+	          index  =len-10+i;
+			var result = storedScores[index];//倒数十个
 
 			console.log( "=" + result['total']);
 			$scope.data[0].push(parseInt(result['total']));
