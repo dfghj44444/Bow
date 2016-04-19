@@ -79,21 +79,30 @@ angular.module('app.routes', [])
       url: '/page8',
       templateUrl: 'templates/page8.html'
     })
+    
+    .state('side-menu21.pageVideo', {
+      url: '/pageVideo',
+      views: {
+        'side-menu21': {
+          templateUrl: 'templates/pageVideo.html',
+          controller:'VideoCtrl'
+        }
+      }
+    })    
         
-        
-    .state('page9', {
+    .state('pageNewScore', {
       url: '/pageNewScore',
-      templateUrl: 'templates/page9.html',
+      templateUrl: 'templates/pageNewScore.html',
       controller:'NewScoreCtrl'
     })
         
       
-    .state('side-menu21.page10', {
+    .state('side-menu21.pageAbout', {
       url: '/pageAbout',
       views: {
         'side-menu21': {
-          templateUrl: 'templates/page10.html',
-		  controller:'page10Ctrl'
+          templateUrl: 'templates/pageAbout.html',
+		  controller:'pageAboutCtrl'
         }
       },
 	

@@ -27,6 +27,70 @@ angular.module('app.controllers', [ ])
 .controller('page8Ctrl', function($scope) {
 
 })
+.controller('VideoCtrl',  function($scope, $cordovaCapture) {
+
+  $scope.captureAudio = function() {
+    var options = { limit: 3, duration: 10 };
+
+    $cordovaCapture.captureAudio(options).then(function(audioData) {
+      // Success! Audio data is here
+    }, function(err) {
+      // An error occurred. Show a message to the user
+    });
+  }
+
+  $scope.captureImage = function() {
+    var options = { limit: 3 };
+
+    $cordovaCapture.captureImage(options).then(function(imageData) {
+      // Success! Image data is here
+    }, function(err) {
+      // An error occurred. Show a message to the user
+    });
+  }
+
+  $scope.captureVideo = function() {
+    var options = { limit: 3, duration: 15 };
+
+    $cordovaCapture.captureVideo(options).then(function(videoData) {
+       var file_path = videoData[0].fullPath;
+       window.localStorage['path']=file_path;
+    }, function(err) {
+      // An error occurred. Show a message to the user
+    });
+  }
+  
+  $scope.StartCapture =function () {
+      alert(0);
+  } 
+  
+  //camera
+  
+//   document.addEventListener("deviceready", function () {
+// 
+//     var options = {
+//       quality: 50,
+//       destinationType: Camera.DestinationType.DATA_URL,
+//       sourceType: Camera.PictureSourceType.CAMERA,
+//       allowEdit: true,
+//       encodingType: Camera.EncodingType.JPEG,
+//       targetWidth: 100,
+//       targetHeight: 100,
+//       popoverOptions: CameraPopoverOptions,
+//       saveToPhotoAlbum: false,
+// 	  correctOrientation:true
+//     };
+// 
+//     $cordovaCamera.getPicture(options).then(function(imageData) {
+//       var image = document.getElementById('myImage');
+//       image.src = "data:image/jpeg;base64," + imageData;
+//     }, function(err) {
+//       // error
+//     });
+// 
+//   }, false);
+    
+})
    
 .controller('NewScoreCtrl', function($scope,$state) {
 
@@ -96,7 +160,7 @@ angular.module('app.controllers', [ ])
 	
 })
    
-.controller('page10Ctrl', function($scope) {
+.controller('pageAboutCtrl', function($scope) {
 alert(1);
 })
    
@@ -112,8 +176,8 @@ alert(1);
     });
     function activate()
     {
-         $scope.labels = [];//横轴内容
-          $scope.data = [[],[]];
+        $scope.labels = [];//横轴内容
+        $scope.data = [[],[]];
         var myDate = new Date();
         for(var i =0;i<10;i++)
         {
