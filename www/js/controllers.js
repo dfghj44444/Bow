@@ -1,4 +1,4 @@
-angular.module('app.controllers', [ ])
+angular.module('app.controllers', ['ngCordova' ])
      
 .controller('page1Ctrl', function($scope) {
 
@@ -27,7 +27,7 @@ angular.module('app.controllers', [ ])
 .controller('page8Ctrl', function($scope) {
 
 })
-.controller('VideoCtrl',  function($scope, $cordovaCapture) {
+.controller('VideoCtrl',  function($scope,$cordovaCapture) {
 
   $scope.captureAudio = function() {
     var options = { limit: 3, duration: 10 };
