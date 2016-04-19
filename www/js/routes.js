@@ -100,15 +100,17 @@ angular.module('app.routes', [])
     })
         
         
-    .state('side-menu21.page12', {
+    .state('side-menu21.pageRecords', {
       url: '/pageRecords',
       views: {
         'side-menu21': {
-          templateUrl: 'templates/page12.html',
-		  controller:'page12Ctrl'
+          templateUrl: 'templates/pageRecords.html',
+		  controller:'pageRecordsCtrl'
         }
-      }
-	 // abstract: true;
+      } , 
+    //   onEnter: function() {
+    //         activate();
+    //     }
     })
         
       

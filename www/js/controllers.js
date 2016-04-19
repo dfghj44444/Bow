@@ -60,7 +60,7 @@ angular.module('app.controllers', [ ])
 		$scope.count++;
 		window.localStorage['count']=$scope.count;
 		//alert('Hello, ' + $scope.count);
-		$state.go('side-menu21.page12');
+		$state.go('side-menu21.pageRecords');
     }
 	
 	$scope.items = [
@@ -100,32 +100,45 @@ angular.module('app.controllers', [ ])
 alert(1);
 })
    
-.controller('page12Ctrl', function($scope) {
+.controller('pageRecordsCtrl', function($scope) 
+{
+   
 
-$scope.labels = [];
-var myDate = new Date();
-for(var i =0;i<8;i++){
-	var date = myDate.getMonth()+"月";
-	date += (parseInt(myDate.getDate()-i))+"日";
-	$scope.labels.unshift(date);
-}
+    $scope.series = [' 环数 ','散布(越小越好)'];
+   
+ 
+    $scope.$on('$ionicView.enter', function() {
+        activate();
+    });
+    function activate()
+    {
+         $scope.labels = [];//横轴内容
+          $scope.data = [[],[]];
+        var myDate = new Date();
+        for(var i =0;i<10;i++)
+        {
+            var date = myDate.getMonth()+"月";
+            date += (parseInt(myDate.getDate()-i))+"日";
+            $scope.labels.unshift(date);
+        }
+        
+         
+        if(localStorage.getItem("scores")!=null)
+        {
+            var storedScores = JSON.parse(localStorage.getItem("scores"));
+            
+            for (var i=0, len = storedScores.length; i < len && i<10; i++)
+            { 
+                var index  =i;
+                if(len>10)
+                index  =len-10+i;
+                var result = storedScores[index];//倒数十个
 
-$scope.series = [' 环数 ','散布(越小越好)'];
-$scope.data = [[],[]];
-var storage = window.localStorage;
-		if(localStorage.getItem("scores")!=null){
-			var storedScores = JSON.parse(localStorage.getItem("scores"));
-			
-		for (var i=0, len = storedScores.length; i < len && i<10; i++)
-		{ 
-			var index  =i;
-			if(len>10)
-	          index  =len-10+i;
-			var result = storedScores[index];//倒数十个
-
-			console.log( "=" + result['total']);
-			$scope.data[0].push(parseInt(result['total']));
-		} 	
-	}  
+                console.log( "=" + result['total']);
+                $scope.data[0].push(parseInt(result['total']));
+            } 	
+        } 
+        console.log('Activating');
+    }
 })
 
