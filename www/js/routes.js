@@ -89,6 +89,17 @@ angular.module('app.routes', [])
         }
       }
     })    
+    
+        
+    .state('side-menu21.pageCamera', {
+      url: '/pageCamera',
+      views: {
+        'side-menu21': {
+          templateUrl: 'templates/pageCamera.html',
+          controller:'CameraCtrl'
+        }
+      }
+    })    
         
     .state('pageNewScore', {
       url: '/pageNewScore',
