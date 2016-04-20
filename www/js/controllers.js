@@ -23,7 +23,9 @@ angular.module('app.controllers', ['ngCordova' ])
 .controller('page7Ctrl', function($scope) {
 
 })
-   
+.controller('page8Ctrl', function($scope) {
+
+})
 .controller('CameraCtrl', function($scope,$cordovaCapture) {
 //-------------------------------
   //camera
@@ -72,7 +74,8 @@ angular.module('app.controllers', ['ngCordova' ])
     });
   }
 })
-.controller('VideoCtrl',  function($scope,$cordovaCapture,VideoService,cordova) {
+
+.controller('VideoCtrl',  function($scope,$cordovaCapture,VideoService) {
 
     $scope.clip = '';
     
