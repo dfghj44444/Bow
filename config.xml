@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.onedouble.gongyujian" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>弓与箭</name>
   <description>
-		An Ionic Framework and Cordova project.
+		一款永久免费的计环软件.
 	</description>
   <author email="dfghj77777@gmail.com" href="http://onedouble.net/">
 		Your Name Here
