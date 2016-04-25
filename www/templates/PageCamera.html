@@ -1,11 +1,17 @@
 
 <ion-view title="视频录制">
-    <ion-content overflow-scroll="true" padding="true" class="has-header">
+<ion-content overflow-scroll="true" padding="true" class="has-header">
         
-<br><br>
-  <ion-scroll>
-	  <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px"/>
-  </ion-scroll>
+
+	<div class="list">
+		<a class="item item-thumbnail-left" href="#">
+		  <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px"/>
+		  <h2>x月x日</h2>
+		  <p>xx环</p>
+		</a>
+    </div>
+
+</ion-content>
   <ion-footer-bar align-title="center" class="bar bar-light">
   <div class="button-bar">
   <button class="button button-energized" ng-click="addImage()">
@@ -13,6 +19,4 @@
   </button>
   </div>
   </ion-footer-bar>
-    </ion-content>
-
 </ion-view>
