@@ -26,7 +26,7 @@ angular.module('app.controllers', ['ngCordova' ])
 .controller('page8Ctrl', function($scope) {
 
 })
-.controller('CameraCtrl', function($scope,$cordovaCapture) {
+.controller('CameraCtrl', function($scope,$cordovaCamera) {
 //-------------------------------
     // 1
     $scope.images = [];
@@ -106,9 +106,9 @@ angular.module('app.controllers', ['ngCordova' ])
 	};
 	//刷新
 	$scope.$on('$ionicView.enter', function() {
-        if(localStorage.getItem("images")!=null)
+        if(window.localStorage.getItem("images")!=null)
         {
-            var storedImgs = JSON.parse(localStorage.getItem("images"));
+            var storedImgs = JSON.parse(window.localStorage.getItem("images"));
             $scope.images =storedImgs;
         } 
     });
