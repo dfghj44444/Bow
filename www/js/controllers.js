@@ -138,7 +138,9 @@ angular.module('app.controllers', ['ngCordova' ])
 		//alert('Hello, ' + $scope.count);
 		$state.go('side-menu21.pageRecords');
     }
-	
+	$scope.recordCancel = function() {	
+		$state.go('side-menu21.pageRecords');
+	}
 	$scope.items = [
 	{ id: '10',volume:'0' },
 	{ id: '9',volume:'0' },
@@ -169,6 +171,8 @@ angular.module('app.controllers', ['ngCordova' ])
            // var input = angular.element(by.model('ctrlInputScore'));
         $scope.totalScore=document.getElementById('ctrlInputScore').value ;
     };
+	
+
 	
 })
    
