@@ -28,53 +28,94 @@ angular.module('app.controllers', ['ngCordova' ])
 })
 .controller('CameraCtrl', function($scope,$cordovaCapture) {
 //-------------------------------
+    // 1
+    $scope.images = [];
   //camera
-  
-//   document.addEventListener("deviceready", function () {
-// 
-//     var options = {
-//       quality: 50,
-//       destinationType: Camera.DestinationType.DATA_URL,
-//       sourceType: Camera.PictureSourceType.CAMERA,
-//       allowEdit: true,
-//       encodingType: Camera.EncodingType.JPEG,
-//       targetWidth: 100,
-//       targetHeight: 100,
-//       popoverOptions: CameraPopoverOptions,
-//       saveToPhotoAlbum: false,
-// 	  correctOrientation:true
-//     };
-// 
-//     $cordovaCamera.getPicture(options).then(function(imageData) {
-//       var image = document.getElementById('myImage');
-//       image.src = "data:image/jpeg;base64," + imageData;
-//     }, function(err) {
-//       // error
-//     });
-// 
-//   }, false);
-
-  $scope.captureAudio = function() {
-    var options = { limit: 3, duration: 10 };
-
-    $cordovaCapture.captureAudio(options).then(function(audioData) {
-      // Success! Audio data is here
-    }, function(err) {
-      // An error occurred. Show a message to the user
+	$scope.addImage = function() {
+		// 2
+		var options = {
+			destinationType : Camera.DestinationType.FILE_URI,
+			sourceType : Camera.PictureSourceType.CAMERA, // Camera.PictureSourceType.PHOTOLIBRARY
+			allowEdit : false,
+			encodingType: Camera.EncodingType.JPEG,
+			popoverOptions: CameraPopoverOptions,
+		};
+		
+		// 3
+		$cordovaCamera.getPicture(options).then(function(imageData) {
+	 
+			// 4
+			onImageSuccess(imageData);
+	 
+			function onImageSuccess(fileURI) {
+				createFileEntry(fileURI);
+			}
+	 
+			function createFileEntry(fileURI) {
+				window.resolveLocalFileSystemURL(fileURI, copyFile, fail);
+			}
+	 
+			// 5
+			function copyFile(fileEntry) {
+				var name = fileEntry.fullPath.substr(fileEntry.fullPath.lastIndexOf('/') + 1);
+				var newName = makeid() + name;
+	 
+				window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(fileSystem2) {
+					fileEntry.copyTo(
+						fileSystem2,
+						newName,
+						onCopySuccess,
+						fail
+					);
+				},
+				fail);
+			}
+			
+			// 6
+			function onCopySuccess(entry) {
+				$scope.$apply(function () {
+					$scope.images.push(entry.nativeURL);
+					//and storage
+					window.localStorage.setItem('images', JSON.stringify($scope.images));
+				});
+			}
+	 
+			function fail(error) {
+				console.log("fail: " + error.code);
+			}
+	 
+			function makeid() {
+				var text = "";
+				var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	 
+				for (var i=0; i < 5; i++) {
+					text += possible.charAt(Math.floor(Math.random() * possible.length));
+				}
+				return text;
+			}
+	 
+		}, function(err) {
+			console.log(err);
+		});
+	};
+	
+	$scope.urlForImage = function(imageName) {
+		var name = imageName.substr(imageName.lastIndexOf('/') + 1);
+		var trueOrigin = cordova.file.dataDirectory + name;
+		return trueOrigin;
+	};
+	//刷新
+	$scope.$on('$ionicView.enter', function() {
+        if(localStorage.getItem("images")!=null)
+        {
+            var storedImgs = JSON.parse(localStorage.getItem("images"));
+            $scope.images =storedImgs;
+        } 
     });
-  }
 
-  $scope.captureImage = function() {
-    var options = { limit: 3 };
-
-    $cordovaCapture.captureImage(options).then(function(imageData) {
-      // Success! Image data is here
-    }, function(err) {
-      // An error occurred. Show a message to the user
-    });
-  }
 })
 
+//视频录制  
 .controller('VideoCtrl',  function($scope,$cordovaCapture,VideoService) {
 
     $scope.clip = '';
@@ -103,7 +144,7 @@ angular.module('app.controllers', ['ngCordova' ])
     }
 
 })
-   
+// 
 .controller('NewScoreCtrl', function($scope,$state) {
 
 	$scope.count = window.localStorage['count'] || 0;
@@ -179,14 +220,11 @@ angular.module('app.controllers', ['ngCordova' ])
 .controller('pageAboutCtrl', function($scope) {
 alert(1);
 })
-   
+// 
 .controller('pageRecordsCtrl', function($scope) 
 {
-   
-
     $scope.series = [' 环数 ','散布(越小越好)'];
    
- 
     $scope.$on('$ionicView.enter', function() {
         activate();
     });
@@ -201,7 +239,6 @@ alert(1);
             date += (parseInt(myDate.getDate()-i))+"日";
             $scope.labels.unshift(date);
         }
-        
          
         if(localStorage.getItem("scores")!=null)
         {

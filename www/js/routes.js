@@ -30,11 +30,11 @@ angular.module('app.routes', [])
     
       
         
-    .state('side-menu21.page2', {
+    .state('side-menu21.pageEquip', {
       url: '/pageEquip',
       views: {
         'side-menu21': {
-          templateUrl: 'templates/page2.html'
+          templateUrl: 'templates/pageEquip.html'
         }
       },
       onEnter: function($state, Auth) {
