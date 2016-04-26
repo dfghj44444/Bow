@@ -145,10 +145,10 @@ angular.module('app.controllers', ['ngCordova' ])
 
 })
 // 
-.controller('NewScoreCtrl', function($scope,$state) {
+.controller('NewScoreCtrl', function($scope,$state,$cordovaCamera) {
 
 	$scope.count = window.localStorage['count'] || 0;
-	
+
     $scope.recordNew = function() {
 		var resultObject={
 			'ten':$scope.items[0].volume,
@@ -162,7 +162,9 @@ angular.module('app.controllers', ['ngCordova' ])
 			'two':$scope.items[8].volume,
 			'one':$scope.items[9].volume,
 			'zero':$scope.items[10].volume,
-			'total':$scope.totalScore|0};
+			'total':$scope.totalScore|0,
+            'img':$scope.theImage
+        };
 			
 		var storedScores=[];
 		if(localStorage.getItem("scores")!=null)
@@ -180,8 +182,30 @@ angular.module('app.controllers', ['ngCordova' ])
 		$state.go('side-menu21.pageRecords');
     }
 	$scope.recordCancel = function() {	
+
 		$state.go('side-menu21.pageRecords');
 	}
+    
+    $scope.$on('$ionicView.enter', function() {
+
+        $scope.theImage = null;
+        $scope.count =  0;
+ 
+        $scope.items = [
+        { id: '10',volume:'0' },
+        { id: '9',volume:'0' },
+        { id: '8',volume:'0' },
+        { id: '7',volume:'0' },
+        { id: '6',volume:'0' },
+        { id: '5',volume:'0' },
+        { id: '4',volume:'0' },
+        { id: '3',volume:'0' },
+        { id: '2',volume:'0' },
+        { id: '1',volume:'0' },
+        { id: '0',volume:'0' }
+        ];
+        $scope.$apply();
+    });
 	$scope.items = [
 	{ id: '10',volume:'0' },
 	{ id: '9',volume:'0' },
@@ -214,7 +238,87 @@ angular.module('app.controllers', ['ngCordova' ])
     };
 	
 
-	
+	  //camera
+	$scope.addImage = function() {
+		// 2
+		var options = {
+			destinationType : Camera.DestinationType.FILE_URI,
+			sourceType : Camera.PictureSourceType.CAMERA, // Camera.PictureSourceType.PHOTOLIBRARY
+			allowEdit : false,
+			encodingType: Camera.EncodingType.JPEG,
+			popoverOptions: CameraPopoverOptions,
+		};
+		
+		// 3
+		$cordovaCamera.getPicture(options).then(function(imageData) {
+	 
+			// 4
+			onImageSuccess(imageData);
+	 
+			function onImageSuccess(fileURI) {
+				createFileEntry(fileURI);
+			}
+	 
+			function createFileEntry(fileURI) {
+				window.resolveLocalFileSystemURL(fileURI, copyFile, fail);
+			}
+	 
+			// 5
+			function copyFile(fileEntry) {
+				var name = fileEntry.fullPath.substr(fileEntry.fullPath.lastIndexOf('/') + 1);
+				var newName = makeid() + name;
+	 
+				window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(fileSystem2) {
+					fileEntry.copyTo(
+						fileSystem2,
+						newName,
+						onCopySuccess,
+						fail
+					);
+				},
+				fail);
+			}
+			
+			// 6
+			function onCopySuccess(entry) {
+				$scope.$apply(function () {
+                    $scope.theImage = entry.nativeURL;//多拍几次也是这张
+                    // if(window.localStorage.getItem("images")!=null)
+                    // {
+                    //     var images = JSON.parse(window.localStorage.getItem("images"));
+                    //     images.push();
+                    //     //and storage
+                    //     window.localStorage.setItem('images', JSON.stringify(images));
+                    // }
+				});
+			}
+	 
+			function fail(error) {
+				console.log("fail: " + error.code);
+			}
+	 
+			function makeid() {
+				var text = "";
+				var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	 
+				for (var i=0; i < 5; i++) {
+					text += possible.charAt(Math.floor(Math.random() * possible.length));
+				}
+				return text;
+			}
+	 
+		}, function(err) {
+			console.log(err);
+		});
+	};
+    
+    $scope.urlForImage = function(imageName) {
+        if(imageName == null)
+            return null;
+		var name = imageName.substr(imageName.lastIndexOf('/') + 1);
+		var trueOrigin = cordova.file.dataDirectory + name;
+		return trueOrigin;
+	};
 })
    
 .controller('pageAboutCtrl', function($scope) {
@@ -225,6 +329,17 @@ alert(1);
 {
     $scope.series = [' 环数 ','散布(越小越好)'];
    
+
+	
+	$scope.urlForImage = function(imageName) {
+        if(imageName == null)
+            return "img/noicon.png";
+		var name = imageName.substr(imageName.lastIndexOf('/') + 1);
+		var trueOrigin = cordova.file.dataDirectory + name;
+		return trueOrigin;
+	};
+
+   
     $scope.$on('$ionicView.enter', function() {
         activate();
     });
@@ -232,6 +347,7 @@ alert(1);
     {
         $scope.labels = [];//横轴内容
         $scope.data = [[],[]];
+        $scope.images = [];
         var myDate = new Date();
         for(var i =0;i<10;i++)
         {
@@ -253,9 +369,14 @@ alert(1);
 
                 console.log( "=" + result['total']);
                 $scope.data[0].push(parseInt(result['total']));
+                var theData ={'score':parseInt(result['total']),'img':result['img']};
+                $scope.images.push(theData);
+   
             } 	
         } 
+
         console.log('Activating');
     }
+    
 })
 
