@@ -115,8 +115,5 @@ angular.module('app.services', [])
             return promise;
         }
     }
-})
-
-
-;
+});
 

@@ -325,7 +325,7 @@ angular.module('app.controllers', ['ngCordova' ])
 alert(1);
 })
 // 
-.controller('pageRecordsCtrl', function($scope) 
+.controller('pageRecordsCtrl', function($scope,$stateParams) 
 {
     $scope.series = [' 环数 ','散布(越小越好)'];
    
@@ -351,7 +351,7 @@ alert(1);
         var myDate = new Date();
         for(var i =0;i<10;i++)
         {
-            var date = myDate.getMonth()+"月";
+            var date = (myDate.getMonth()+1)+"月";
             date += (parseInt(myDate.getDate()-i))+"日";
             $scope.labels.unshift(date);
         }
