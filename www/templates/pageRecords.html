@@ -12,7 +12,19 @@
 		chart-click="onClick" >
 		</canvas> 
 		</div>
-		
-        <a ui-sref="pageNewScore" id="page12-button8" ng-click="record()" style="font-weight:bold;border-radius:-8px -8px -8px -8px;" class="button button-balanced  button-block">记录一组</a>
+        <p>
+	<div class="list" ng-repeat="image in images">
+		<a class="item item-thumbnail-left" href="#">
+		  <img  ng-src="{{urlForImage(image['img'])}}" height="200px"/>
+		  <h2>x月x日</h2>
+		  <p>{{image['score']}}环</p>
+		</a>
+    </div>
+       
     </ion-content>
+      <ion-footer-bar align-title="center" class="bar bar-light">
+            <div class="button-bar">
+                <a ui-sref="pageNewScore" id="page12-button8" ng-click="record()" style="font-weight:bold;border-radius:-8px -8px -8px -8px;" class="button button-balanced  button-block">记录一组</a>
+            </div>
+      </ion-footer-bar>
 </ion-view>
