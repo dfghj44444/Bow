@@ -7,96 +7,68 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
-
-  
       
-    .state('side-menu21', {
+    .state('side-menu', {
       url: '/side-menu',
       abstract:true,
-      templateUrl: 'templates/side-menu21.html'
+      templateUrl: 'templates/side-menu.html'
     })
-      
-    
-      
-        
-    .state('page1', {
-      url: '/page1',
-      templateUrl: 'templates/page1.html'
+         
+    .state('pageLogin', {
+      url: '/pageLogin',
+      templateUrl: 'templates/pageLogin.html'
     })
         
-      
-    
-      
-        
-    .state('side-menu21.pageEquip', {
+    .state('side-menu.pageEquip', {
       url: '/pageEquip',
       views: {
-        'side-menu21': {
+        'side-menu': {
           templateUrl: 'templates/pageEquip.html'
         }
       },
       onEnter: function($state, Auth) {
         if(!Auth.isLoggedIn()) {
-              $state.go('page1');
+              $state.go('pageLogin');
            }
         }
-      
     }) 
-      
-        
-    .state('side-menu21.page3', {
+     
+    .state('side-menu.pageMap', {
       url: '/pageMap',
       views: {
-        'side-menu21': {
-          templateUrl: 'templates/page3.html'
+        'side-menu': {
+          templateUrl: 'templates/pageMap.html'
         }
       }
     })
-    
-      
-        
-    .state('page4', {
+       
+    .state('pageNavi', {
       url: '/pageNavi',
-      templateUrl: 'templates/page4.html'
+      templateUrl: 'templates/pageNavi.html'
     })
         
         
-    .state('page6', {
-      url: '/pageScore1',
-      templateUrl: 'templates/page6.html'
-    })
-    
-        
-    .state('page7', {
-      url: '/pageScore2',
-      templateUrl: 'templates/page7.html'
-    })
-        
-        
-    .state('page8', {
-      url: '/page8',
-      templateUrl: 'templates/page8.html'
+    .state('pageScores1', {
+      url: '/pageScores1',
+      templateUrl: 'templates/pageScores1.html'
     })
     
-    .state('side-menu21.pageVideo', {
+    .state('pageScores2', {
+      url: '/pageScores2',
+      templateUrl: 'templates/pageScores2.html'
+    })
+  
+    .state('pageScores3', {
+      url: '/pageScores3',
+      templateUrl: 'templates/pageScores3.html'
+    })
+    
+    .state('side-menu.pageVideo', {
       url: '/pageVideo',
       views: {
-        'side-menu21': {
+        'side-menu': {
           templateUrl: 'templates/pageVideo.html',
           controller:'VideoCtrl'
-        }
-      }
-    })    
-    
-        
-    .state('side-menu21.pageCamera', {
-      url: '/pageCamera',
-      views: {
-        'side-menu21': {
-          templateUrl: 'templates/pageCamera.html',
-          controller:'CameraCtrl'
         }
       }
     })    
@@ -106,24 +78,21 @@ angular.module('app.routes', [])
       templateUrl: 'templates/pageNewScore.html',
       controller:'NewScoreCtrl'
     })
-        
-      
-    .state('side-menu21.pageAbout', {
+ 
+    .state('side-menu.pageAbout', {
       url: '/pageAbout',
       views: {
-        'side-menu21': {
+        'side-menu': {
           templateUrl: 'templates/pageAbout.html',
 		  controller:'pageAboutCtrl'
         }
       },
-	
     })
-        
-        
-    .state('side-menu21.pageRecords', {
+          
+    .state('side-menu.pageRecords', {
       url: '/pageRecords',
       views: {
-        'side-menu21': {
+        'side-menu': {
           templateUrl: 'templates/pageRecords.html',
 		  controller:'pageRecordsCtrl'
 
@@ -133,14 +102,21 @@ angular.module('app.routes', [])
 			'two':0,'one':0,'zero':0,'total':0,'img':''}
       } , 
     })
-  
+	
+	 
+    .state('side-menu.pageSet', {
+      url: '/pageSet',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/pageSet.html',
+		  controller:'pageSetCtrl'
+        }
+      },
+    })
+	
+	
     ;
-
   // if none of the above states are matched, use this as the fallback
   
   $urlRouterProvider.otherwise('/side-menu/pageRecords');
-  
-
-  
-
 });

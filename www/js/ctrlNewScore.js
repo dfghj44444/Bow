@@ -1,7 +1,21 @@
 angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera) {
 
-	$scope.count = window.localStorage['count'] || 0;
-
+	
+	
+	$scope.items = [
+	{ id: '10',volume:'0' },
+	{ id: '9',volume:'0' },
+	{ id: '8',volume:'0' },
+	{ id: '7',volume:'0' },
+	{ id: '6',volume:'0' },
+	{ id: '5',volume:'0' },
+	{ id: '4',volume:'0' },
+	{ id: '3',volume:'0' },
+	{ id: '2',volume:'0' },
+	{ id: '1',volume:'0' },
+	{ id: '0',volume:'0' }
+	];
+	//记录一组新
     $scope.recordNew = function() {
 		var resultObject={
 			'ten':$scope.items[0].volume,
@@ -28,50 +42,42 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		window.localStorage.setItem('scores', JSON.stringify(storedScores));
 		//var retrievedObject = localStorage.getItem('testObject');
 		//console.log('retrievedObject: ', JSON.parse(retrievedObject));
-
+		$scope.count = window.localStorage['count'] || 0;
 		$scope.count++;
 		window.localStorage['count']=$scope.count;
-		//alert('Hello, ' + $scope.count);
-		$state.go('side-menu21.pageRecords');
+		//平均值和方差
+		var arrows = 0;
+
+		for( x in $scope.items) 
+			arrows += x.value;
+        }  
+		var average = $scope.totalScore/arrows;
+		var variance=0;
+		for( x in $scope.items ){
+			for( int i = 0 ; i < x.value ; i++ ){
+				variance += pow(average-x.id,2);
+			}
+        }  
+		var variance = variance/arrows;
+		
+		$state.go('side-menu.pageRecords');
     }
 	$scope.recordCancel = function() {	
 
-		$state.go('side-menu21.pageRecords');
+		$state.go('side-menu.pageRecords');
 	}
     
     $scope.$on('$ionicView.enter', function() {
 
         $scope.theImage = null;
-        $scope.count =  0;
+        $scope.totalScore =  0;
  
-        $scope.items = [
-        { id: '10',volume:'0' },
-        { id: '9',volume:'0' },
-        { id: '8',volume:'0' },
-        { id: '7',volume:'0' },
-        { id: '6',volume:'0' },
-        { id: '5',volume:'0' },
-        { id: '4',volume:'0' },
-        { id: '3',volume:'0' },
-        { id: '2',volume:'0' },
-        { id: '1',volume:'0' },
-        { id: '0',volume:'0' }
-        ];
+		for( x in $scope.items)
+			x.volume=0;; //don't forget to add the base
+		
         $scope.$apply();
     });
-	$scope.items = [
-	{ id: '10',volume:'0' },
-	{ id: '9',volume:'0' },
-	{ id: '8',volume:'0' },
-	{ id: '7',volume:'0' },
-	{ id: '6',volume:'0' },
-	{ id: '5',volume:'0' },
-	{ id: '4',volume:'0' },
-	{ id: '3',volume:'0' },
-	{ id: '2',volume:'0' },
-	{ id: '1',volume:'0' },
-	{ id: '0',volume:'0' }
-	];
+
 
 	$scope.setLevelText = function() {
 		 
@@ -81,7 +87,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		}
 		if(sum>0){
 			$scope.totalScore = sum;
-			$scope.scoreText = "环"
+			$scope.scoreText = "环";
 		}
     };
             
