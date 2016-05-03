@@ -126,6 +126,9 @@ angular.module('app.routes', [])
         'side-menu21': {
           templateUrl: 'templates/pageRecords.html',
 		  controller:'pageRecordsCtrl'
+		  params:{	'ten':0,'nine':0,'eight':0,'seven':0,
+			'six':0,'five':0,'four':0,'three':0,
+			'two':0,'one':0,'zero':0,'total':0,'img':''};
         }
       } , 
     })

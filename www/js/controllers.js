@@ -329,7 +329,8 @@ alert(1);
 {
     $scope.series = [' 环数 ','散布(越小越好)'];
    
-
+    //var index = $stateParams.index;
+    //var anotherKey = $stateParams.anotherKey;
 	
 	$scope.urlForImage = function(imageName) {
         if(imageName == null)
