@@ -15,7 +15,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 	{ id: '1',volume:'0' },
 	{ id: '0',volume:'0' }
 	];
-	//¼ÇÂ¼Ò»×éĞÂ
+	//è®°å½•ä¸€ç»„æ–°
     $scope.recordNew = function() {
 		var resultObject={
 			'ten':$scope.items[0].volume,
@@ -45,7 +45,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		$scope.count = window.localStorage['count'] || 0;
 		$scope.count++;
 		window.localStorage['count']=$scope.count;
-		//Æ½¾ùÖµºÍ·½²î
+		//å¹³å‡å€¼å’Œæ–¹å·®
 		var arrows = 0;
 
 		for( x in $scope.items) 
@@ -87,7 +87,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		}
 		if(sum>0){
 			$scope.totalScore = sum;
-			$scope.scoreText = "»·";
+			$scope.scoreText = "ç¯";
 		}
     };
             
@@ -141,7 +141,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			// 6
 			function onCopySuccess(entry) {
 				$scope.$apply(function () {
-                    $scope.theImage = entry.nativeURL;//¶àÅÄ¼¸´ÎÒ²ÊÇÕâÕÅ
+                    $scope.theImage = entry.nativeURL;//å¤šæ‹å‡ æ¬¡ä¹Ÿæ˜¯è¿™å¼ 
                     // if(window.localStorage.getItem("images")!=null)
                     // {
                     //     var images = JSON.parse(window.localStorage.getItem("images"));

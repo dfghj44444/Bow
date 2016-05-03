@@ -1,6 +1,6 @@
 angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,$stateParams) 
 {
-    $scope.series = [' »·Êı ','É¢²¼(Ô½Ğ¡Ô½ºÃ)'];
+    $scope.series = [' ç¯æ•° ','æ•£å¸ƒ(è¶Šå°è¶Šå¥½)'];
    
     //var index = $stateParams.index;
     //var anotherKey = $stateParams.anotherKey;
@@ -20,14 +20,14 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 	
     function activate()
     {
-        $scope.labels = [];//ºáÖáÄÚÈİ
+        $scope.labels = [];//æ¨ªè½´å†…å®¹
         $scope.data = [[],[]];
         $scope.images = [];
         var myDate = new Date();
         for(var i =0;i<10;i++)
         {
-            var date = (myDate.getMonth()+1)+"ÔÂ";
-            date += (parseInt(myDate.getDate()-i))+"ÈÕ";
+            var date = (myDate.getMonth()+1)+"æœˆ";
+            date += (parseInt(myDate.getDate()-i))+"æ—¥";
             $scope.labels.unshift(date);
         }
          
@@ -40,7 +40,7 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
                 var index  =i;
                 if(len>10)
                 index  =len-10+i;
-                var result = storedScores[index];//µ¹ÊıÊ®¸ö
+                var result = storedScores[index];//å€’æ•°åä¸ª
 
                 console.log( "=" + result['total']);
                 $scope.data[0].push(parseInt(result['total']));
