@@ -1,7 +1,5 @@
 angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera) {
 
-	
-	
 	$scope.items = [
 	{ id: '10',volume:'0' },
 	{ id: '9',volume:'0' },
