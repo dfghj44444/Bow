@@ -1,4 +1,4 @@
-app.controllers.controller('pageRecordsCtrl', function($scope,$stateParams) 
+angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,$stateParams) 
 {
     $scope.series = [' 环数 ','散布(越小越好)'];
    
