@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.onedouble.gongyujian" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>弓与箭</name>
+  <name>十环</name>
   <description>
 		一款永久免费的计环软件.
 	</description>
-  <author email="dfghj77777@gmail.com" href="http://onedouble.net/">
-		Your Name Here
+  <author email="dfghj77777@gmail.com" href="http://www.85zhuan.com/">
+		85砖工作室
 	</author>
   <content src="index.html"/>
   <access origin="*"/>
