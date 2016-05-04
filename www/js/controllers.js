@@ -61,4 +61,3 @@ angular.module('app.controllers', ['ngCordova' ])
 
 })
 // 
-

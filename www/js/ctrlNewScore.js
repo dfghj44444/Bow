@@ -52,11 +52,11 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		var average = $scope.totalScore/arrows;
 		var variance=0;
 		for( x in $scope.items ){
-			for( int i = 0 ; i < x.value ; i++ ){
+			for( var i = 0 ; i < x.value ; i++ ){
 				variance += pow(average-x.id,2);
 			}
         }  
-		var variance = variance/arrows;
+		variance = variance/arrows;
 		
 		$state.go('side-menu.pageRecords');
     }
