@@ -90,16 +90,14 @@ angular.module('app.routes', [])
     })
           
     .state('side-menu.pageRecords', {
-      url: '/pageRecords?ten&nine&total',
-      views: {
+      url: '/pageRecords?ten&nine&eight&seven&six&five&four&three&two&one&zero&total&img',
+      cached:true,
+	  views: {
         'side-menu': {
           templateUrl: 'templates/pageRecords.html',
 		  controller:'pageRecordsCtrl'
 
-        },
-	    params:{	'ten':0,'nine':0,'eight':0,'seven':0,
-			'six':0,'five':0,'four':0,'three':0,
-			'two':0,'one':0,'zero':0,'total':0,'img':''}
+        }
       } , 
     })
 	
@@ -118,5 +116,5 @@ angular.module('app.routes', [])
     ;
   // if none of the above states are matched, use this as the fallback
   
-  $urlRouterProvider.otherwise('/side-menu/pageRecords',{'id':0});
+  $urlRouterProvider.otherwise('/side-menu/pageRecords',{'total':-1});
 });

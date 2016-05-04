@@ -32,18 +32,8 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
             'img':$scope.theImage
         };
 			
-		var storedScores=[];
-		if(localStorage.getItem("scores")!=null)
-		    storedScores = JSON.parse(window.localStorage.getItem("scores"));
 
-		storedScores.push(resultObject);
 
-		window.localStorage.setItem('scores', JSON.stringify(storedScores));
-		//var retrievedObject = localStorage.getItem('testObject');
-		//console.log('retrievedObject: ', JSON.parse(retrievedObject));
-		$scope.count = window.localStorage['count'] || 0;
-		$scope.count++;
-		window.localStorage['count']=$scope.count;
 		//平均值和方差
 		var arrows = 0;
 
@@ -59,11 +49,11 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
         }  
 		variance = variance/arrows;
 		
-		$state.go('side-menu.pageRecords',{id:10});
+		$state.go('side-menu.pageRecords',resultObject);
     }
 	$scope.recordCancel = function() {	
 
-		$state.go('side-menu.pageRecords');
+		$state.go('side-menu.pageRecords',{'total':0});
 	}
     
     $scope.$on('$ionicView.enter', function() {
@@ -86,13 +76,12 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		}
 		if(sum>0){
 			$scope.totalScore = sum;
-
 		}
     };
             
     $scope.onScoreChange=function() {
            // var input = angular.element(by.model('ctrlInputScore'));
-        $scope.totalScore=document.getElementById('ctrlInputScore').value ;
+		$scope.totalScore=document.getElementById('ctrlInputScore').value ;
     };
 	
 
