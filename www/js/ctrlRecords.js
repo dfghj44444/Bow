@@ -1,10 +1,9 @@
-angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,$stateParams) 
+angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,$state,$stateParams) 
 {
     $scope.series = [' 环数 ','散布(越小越好)'];
    
-    //var index = $stateParams.index;
-    //var anotherKey = $stateParams.anotherKey;
-	
+		var index = $stateParams.total;
+
 	$scope.urlForImage = function(imageName) {
         if(imageName == null)
             return "img/noicon.png";
@@ -14,12 +13,16 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 	};
 
    
-    $scope.$on('$ionicView.enter', function() {
-        activate();
+    $scope.$on('$ionicView.enter', function(event, data) {
+		var index = $state.params;
+        activate(data.stateParams);
     });
 	
-    function activate()
+    function activate($stateParams)
     {
+		
+		index = $stateParams;
+	
         $scope.labels = [];//横轴内容
         $scope.data = [[],[]];
         $scope.images = [];

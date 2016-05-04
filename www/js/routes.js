@@ -90,7 +90,7 @@ angular.module('app.routes', [])
     })
           
     .state('side-menu.pageRecords', {
-      url: '/pageRecords',
+      url: '/pageRecords?ten&nine&total',
       views: {
         'side-menu': {
           templateUrl: 'templates/pageRecords.html',
@@ -118,5 +118,5 @@ angular.module('app.routes', [])
     ;
   // if none of the above states are matched, use this as the fallback
   
-  $urlRouterProvider.otherwise('/side-menu/pageRecords');
+  $urlRouterProvider.otherwise('/side-menu/pageRecords',{'id':0});
 });

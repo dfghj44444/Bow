@@ -59,7 +59,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
         }  
 		variance = variance/arrows;
 		
-		$state.go('side-menu.pageRecords');
+		$state.go('side-menu.pageRecords',{id:10});
     }
 	$scope.recordCancel = function() {	
 
