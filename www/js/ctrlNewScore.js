@@ -1,5 +1,6 @@
 angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera) {
 
+
 	$scope.items = [
 	{ id: '10',volume:'0' },
 	{ id: '9',volume:'0' },
@@ -48,12 +49,12 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 
 		for( x in $scope.items) 
 			arrows += x.value;
-        }  
+        
 		var average = $scope.totalScore/arrows;
 		var variance=0;
 		for( x in $scope.items ){
 			for( var i = 0 ; i < x.value ; i++ ){
-				variance += pow(average-x.id,2);
+				variance += pow(average-$scope.items[x].id,2);
 			}
         }  
 		variance = variance/arrows;
@@ -66,12 +67,12 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 	}
     
     $scope.$on('$ionicView.enter', function() {
-
-        $scope.theImage = null;
         $scope.totalScore =  0;
- 
+        $scope.theImage = null;
+		$scope.haveImg = false;
+		document.getElementById('ctrlInputScore').value = '';
 		for( x in $scope.items)
-			x.volume=0;; //don't forget to add the base
+			$scope.items[x].volume=0;; //don't forget to add the base
 		
         $scope.$apply();
     });
@@ -85,7 +86,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		}
 		if(sum>0){
 			$scope.totalScore = sum;
-			$scope.scoreText = "环";
+
 		}
     };
             
@@ -147,11 +148,13 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
                     //     //and storage
                     //     window.localStorage.setItem('images', JSON.stringify(images));
                     // }
+					$scope.haveImg =true;
 				});
 			}
 	 
 			function fail(error) {
 				console.log("fail: " + error.code);
+				$scope.haveImg =false;
 			}
 	 
 			function makeid() {

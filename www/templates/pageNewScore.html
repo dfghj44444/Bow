@@ -11,7 +11,7 @@
                         <button class="button button-small button-calm" ng-click="addImage()">拍照</button>
                    
                 </div>
-                <img id ="ImgCtrl" ng-modal = "theImage" ng-src = "{{urlForImage(theImage)}}" height = "200px"/>
+                <img id ="ImgCtrl" ng-modal = "theImage" ng-src = "{{urlForImage(theImage)}}" ng-show="haveImg" height = "200px"/>
             </div>
 	
             <ion-item class="range range-positive" ng-repeat="item in items" item="item" >
