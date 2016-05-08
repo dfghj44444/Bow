@@ -29,7 +29,9 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			'one':$scope.items[9].volume,
 			'zero':$scope.items[10].volume,
 			'total':$scope.totalScore|0,
-            'img':$scope.theImage
+            'img':$scope.theImage,
+            //'variance':留空待填
+            
         };
 			
 
@@ -41,7 +43,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			arrows += x.value;
         
 		var average = $scope.totalScore/arrows;
-		var variance=0;
+		var variance=0;//方差
 		for( x in $scope.items ){
 			for( var i = 0 ; i < x.value ; i++ ){
 				variance += pow(average-$scope.items[x].id,2);

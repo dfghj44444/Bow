@@ -24,7 +24,23 @@ angular.module('app.controllers', ['ngCordova' ])
 
 })
 .controller('pageSetCtrl', function($scope) {
-
+    $scope.tabs = [{
+                value: 'share',
+                label: '分享'
+            }, {
+                value: 'ask',
+                label: '问答'
+            }, {
+                value: 'job',
+                label: '招聘'
+            }, {
+                value: 'bb',
+                label: '吐槽'
+            }];
+    
+    // 默认值
+    $scope.topicsDatatab='share';
+    $scope.arrowsCount = 1000;
 })
 
 //视频录制  
@@ -54,8 +70,7 @@ angular.module('app.controllers', ['ngCordova' ])
         console.log('show clip: ' + clip);
     }
 })
-// 
-
+ 
    
 .controller('pageAboutCtrl', function($scope) {
 
