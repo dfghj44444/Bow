@@ -40,7 +40,7 @@ angular.module('app.controllers', ['ngCordova' ])
     
     // 默认值
     $scope.topicsDatatab='share';
-    $scope.arrowsCount = 1000;
+    $scope.arrowsCount = 1000;//留待完善
 })
 
 //视频录制  
