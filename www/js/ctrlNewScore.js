@@ -1,5 +1,4 @@
-angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera) {
-
+angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera,DateService) {
 
 	$scope.items = [
 	{ id: '10',volume:'0' },
@@ -30,11 +29,14 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			'zero':$scope.items[10].volume,
 			'total':$scope.totalScore|0,
             'img':$scope.theImage,
-            //'variance':留空待填
+            'variance':'',
+			'date':0,
             
         };
-			
-
+		//记录时间	
+		var myDate = new Date();
+		resultObject.date = myDate.getTime()/1000;
+		//alert(DateService('Y-m-d H:i:s',resultObject.time));
 
 		//平均值和方差
 		var arrows = 0;
@@ -49,7 +51,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 				variance += pow(average-$scope.items[x].id,2);
 			}
         }  
-		variance = variance/arrows;
+		resultObject.variance = variance/arrows;
 		
 		$state.go('side-menu.pageRecords',resultObject);
     }

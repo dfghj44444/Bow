@@ -25,17 +25,17 @@ angular.module('app.controllers', ['ngCordova' ])
 })
 .controller('pageSetCtrl', function($scope) {
     $scope.tabs = [{
-                value: 'share',
-                label: '分享'
+                value: '1',
+                label: '1支箭'
             }, {
-                value: 'ask',
-                label: '问答'
+                value: '6',
+                label: '6支箭'
             }, {
-                value: 'job',
-                label: '招聘'
+                value: '12',
+                label: '12支箭'
             }, {
-                value: 'bb',
-                label: '吐槽'
+                value: '36',
+                label: '36支箭'
             }];
     
     // 默认值

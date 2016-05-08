@@ -16,7 +16,7 @@
 	<div class="list" ng-repeat="image in images">
 		<a class="item item-thumbnail-left" href="#">
 		  <img  ng-src="{{urlForImage(image['img'])}}" height="200px"/>
-		  <h2>x月x日</h2>
+		  <h2>{{image['date']}}</h2>
 		  <p>{{image['score']}}环</p>
 		</a>
     </div>
