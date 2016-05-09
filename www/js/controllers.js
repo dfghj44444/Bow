@@ -75,4 +75,23 @@ angular.module('app.controllers', ['ngCordova' ])
 .controller('pageAboutCtrl', function($scope) {
 
 })
+
+.controller('HomeCtrl',function($scope,$state){
+    $state.go("side-menu.tab.dash");
+    	//上拉加载
+    $scope.items = [];
+	$scope.loadMore = function() {
+		$http.get('/more-items').success(function(items) {
+		useItems(items);
+		$scope.$broadcast('scroll.infiniteScrollComplete');
+		});
+	};
+
+	$scope.$on('stateChangeSuccess', function() {
+		$scope.loadMore();
+	});
+	$scope.moreDataCanBeLoaded = function() {
+		return true;
+	};
+})
 // 
