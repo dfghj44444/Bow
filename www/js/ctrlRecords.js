@@ -1,17 +1,11 @@
-angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,$stateParams) 
+angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,$stateParams,DateService) 
 {
 	$scope.series = [' 环数 ','散布(越小越好)'];
 	$scope.labels = [];//横轴内容
 	$scope.data = [[],[]];
 	$scope.images = [];   
 	var myDate = new Date();
-	for(var i =0;i<10;i++)
-	{
-		var date = (myDate.getMonth()+1)+"月";
-		date += (parseInt(myDate.getDate()-i))+"日";
-		$scope.labels.unshift(date);
-	}
-	 
+
 	if(localStorage.getItem("scores")!=null)
 	{
 		var storedScores = JSON.parse(localStorage.getItem("scores"));
@@ -25,7 +19,14 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 
 			console.log( "=" + result['total']);
 			$scope.data[0].push(parseInt(result['total']));//
-			var theData ={'score':parseInt(result['total']),'img':result['img']};
+			var DateTime = '未知日期';
+			if( typeof(result.date) != 'undefined' &&  result.date!=0){
+				$scope.labels.push(DateService('m月d日',result.date));
+				DateTime = DateService('m月d日H时i分',result.date);
+			}
+			else
+				$scope.labels.push('某日');
+			var theData ={'score':parseInt(result['total']),'img':result['img'],'date':DateTime};
 			$scope.images.unshift(theData);
 		} 	
 	}
@@ -45,13 +46,22 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 	
     function activate($stateParams)
     {
-		if(index<1 || typeof($stateParams.img) == "undefined")
+		if( typeof($stateParams.total)=='undefined')
+			return;
+		if($stateParams.total<1 && typeof($stateParams.img) == "undefined")
 			return;
 		
+		var result = $stateParams;
 		//开始加内容
 		$scope.data[0].push(parseInt(result['total']));//
-
-		var theData ={'score':parseInt($stateParams['total']),'img':$stateParams['img']};
+		var DateTime = '未知日期';
+		if( typeof(result.date) != 'undefined' &&  result.date!=0){
+			$scope.labels.push(DateService('m月d日',result.date));
+			DateTime = DateService('m月d日H时i分',result.date);
+		}
+		else
+			$scope.labels.push('某日');
+		var theData ={'score':parseInt(result['total']),'img':result['img'],'date':DateTime};
 		$scope.images.unshift(theData);	
 		if($scope.data[0].length>10){
 			$scope.data[0].splice(0,1);
@@ -64,7 +74,7 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 		if(localStorage.getItem("scores")!=null)
 		    storedScores = JSON.parse(window.localStorage.getItem("scores"));
 
-		storedScores.push(resultObject);
+		storedScores.push(result);
 
 		window.localStorage.setItem('scores', JSON.stringify(storedScores));
 		//var retrievedObject = localStorage.getItem('testObject');
@@ -72,6 +82,9 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 		$scope.count = window.localStorage['count'] || 0;
 		$scope.count++;
 		window.localStorage['count']=$scope.count;
+		
+				
+		$scope.$apply();
     }
 	//上拉加载
     $scope.items = [];
