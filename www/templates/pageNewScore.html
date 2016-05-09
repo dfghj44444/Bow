@@ -4,28 +4,30 @@
             <div class="list card">
                 <div class="item item-divider">总成绩</div>
                 <div class="item item-body item-input-inset">
-                   
-                        <label class="item-input-wrapper">
+
+                    <label class="item-input-wrapper">
                             <input type="text"  placeholder="0环(可以在这里直接输入总成绩,无需设置具体环数)"  ng-model="TotalScore" ng-change="onScoreChange()" id="ctrlInputScore">
                         </label>
-                        <button class="button button-small button-calm" ng-click="addImage()">拍照</button>
-                   
-                </div>
-                <img id ="ImgCtrl" ng-modal = "theImage" ng-src = "{{urlForImage(theImage)}}" ng-show="haveImg" height = "200px"/>
-            </div>
-	
-            <ion-item class="range range-positive" ng-repeat="item in items" item="item" >
-                <input type="range" ng-model="item.volume" ng-change="setLevelText()" value="0" min="0" max="12"><font  color="blue">{{item.id}}环*{{item.volume}} ={{ item.id*item.volume}}</font>
-            </ion-item>
-	
-        </form>
-     	  
-    </ion-content>
-            <ion-footer-bar align-title="center" class="bar bar-light">
-	  <div class="button-bar">
-  <button id="page9-button4" type="button" style="font-weight:bold;border-radius:-8px -8px -8px -8px;"  class="button button-assertive button-block" ng-click="recordNew()" >记录完成</button>
-  <button id="btnCancelRecord"  type="button"  class="button button-stable button-block" ng-click="recordCancel()" >放弃记录</button>
+                    <button class="button button-small button-calm" ng-click="addImage()">拍照</button>
 
-  </div>
-  </ion-footer-bar>
+                </div>
+                <img id="ImgCtrl" ng-modal="theImage" ng-src="{{urlForImage(theImage)}}" ng-show="haveImg" height="200px" />
+            </div>
+
+            <ion-item class="range range-positive" ng-repeat="item in items" item="item">
+                <input type="range" ng-model="item.volume" ng-change="setLevelText()" value="0" min="0" max="12">
+                <font color="blue">{{item.id}}环*{{item.volume}} ={{ item.id*item.volume}}</font>
+            </ion-item>
+
+        </form>
+
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar bar-light">
+        <div class="button-bar">
+            <button id="page9-button4" type="button" style="font-weight:bold;border-radius:-8px -8px -8px -8px;" class="button button-assertive button-block"
+                ng-click="recordNew()">记录完成</button>
+            <button id="btnCancelRecord" type="button" class="button button-stable button-block" ng-click="recordCancel()">放弃记录</button>
+
+        </div>
+    </ion-footer-bar>
 </ion-view>

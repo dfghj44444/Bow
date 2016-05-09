@@ -73,5 +73,19 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 		$scope.count++;
 		window.localStorage['count']=$scope.count;
     }
-    
+	//上拉加载
+    $scope.items = [];
+	$scope.loadMore = function() {
+		$http.get('/more-items').success(function(items) {
+		useItems(items);
+		$scope.$broadcast('scroll.infiniteScrollComplete');
+		});
+	};
+
+	$scope.$on('stateChangeSuccess', function() {
+		$scope.loadMore();
+	});
+	$scope.moreDataCanBeLoaded = function() {
+		return true;
+	};
 }) 

@@ -20,7 +20,8 @@
 		  <p>{{image['score']}}环</p>
 		</a>
     </div>
-       
+       <ion-infinite-scroll  ng-if="moreDataCanBeLoaded()"  icon="ion-loading-c" distance="1%"  on-infinite="loadMoreData()">
+       </ion-infinite-scroll>
     </ion-content>
       <ion-footer-bar align-title="center" class="bar bar-light">
             <div class="button-bar">
