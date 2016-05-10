@@ -4,11 +4,17 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 	$scope.labels = [];//横轴内容
 	$scope.data = [[],[]];
 	$scope.images = [];   
+	$scope.goneDays = 0;
 	var myDate = new Date();
 
 	if(localStorage.getItem("scores")!=null)
 	{
 		var storedScores = JSON.parse(localStorage.getItem("scores"));
+		var lastItem = storedScores[storedScores.length-1];
+		if(typeof(lastItem.date) != 'undefined' &&  lastItem.date!=0){
+			var deltaTime = myDate.getTime - lastItem.date*1000;
+			$scope.goneDays= parseInt(deltaTime/24/3.6);
+		}
 		
 		for (var i=0, len = storedScores.length; i < len && i<10; i++)
 		{ 
