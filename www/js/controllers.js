@@ -37,6 +37,16 @@ angular.module('app.controllers', ['ngCordova' ])
                 value: '36',
                 label: '36支箭'
             }];
+    $scope.tabs2 = [{
+                value: '1',
+                label: 'X视为十环'
+            }, {
+                value: '2',
+                label: 'X为10,其他环减一'
+            }, {
+                value: '3',
+                label: 'X视为特殊十环'
+            }];
     
     // 默认值
     $scope.topicsDatatab='share';

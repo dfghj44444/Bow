@@ -4,7 +4,8 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 	$scope.labels = [];//横轴内容
 	$scope.data = [[],[]];
 	$scope.images = [];   
-	$scope.goneDays = 0;
+	$scope.gone = 0;
+
 	var myDate = new Date();
 
 	if(localStorage.getItem("scores")!=null)
