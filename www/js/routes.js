@@ -111,6 +111,44 @@ angular.module('app.routes', [])
         }
       },
     })
+    
+    .state('side-menu.pageIntro', {
+      url: '/pageIntro',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/pageIntro.html',
+		  //controller:'pageIntroCtrl'
+        }
+      },
+    })
+    
+    .state('side-menu.day1',{
+      url: '/day1',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/book/day1.html'
+
+        }
+      }
+    })
+    
+   .state('side-menu.day2',{
+      url: '/day2',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/book/day2.html',
+        }
+      }
+    })
+    
+   .state('side-menu.day3',{
+      url: '/day3',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/book/day3.html',
+        }
+      }
+    })
 	
     // // setup an abstract state for the tabs directive
     .state('side-menu.tab', {
