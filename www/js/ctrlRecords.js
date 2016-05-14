@@ -5,6 +5,8 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 	$scope.data = [[],[]];
 	$scope.images = [];   
 	$scope.gone = 0;
+	$scope.loaded = 0;
+	$scope.loadMax = 0;
 
 	var myDate = new Date();
 
@@ -16,8 +18,9 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 			var deltaTime = myDate.getTime()/1000 - lastItem.date;
 			$scope.gone= parseInt(deltaTime/24/3600);
 		}
-		
-		for (var i=0, len = storedScores.length; i < len && i<10; i++)
+		var limit = Math.min(10,storedScores.length);
+			
+		for (var i=0,len = storedScores.length; i < limit; i++)
 		{ 
 			var index  =i;
 			if(len>10)
@@ -36,6 +39,8 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 			var theData ={'score':parseInt(result['total']),'img':result['img'],'date':DateTime};
 			$scope.images.unshift(theData);
 		} 	
+		$scope.loaded = limit;
+		$scope.loadMax = storedScores.length;
 	}
 
 	$scope.urlForImage = function(imageName) {
@@ -44,6 +49,38 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 		var name = imageName.substr(imageName.lastIndexOf('/') + 1);
 		var trueOrigin = cordova.file.dataDirectory + name;
 		return trueOrigin;
+	};
+	
+	$scope.loadMore = function() {
+		var storedScores = JSON.parse(localStorage.getItem("scores"));
+		
+		var rest = storedScores.length -$scope.loaded;
+		var limit = Math.min(10,rest);
+		for (var i = 0; i<limit; i++ )
+		{ 
+			var index  = rest - i;
+			var result = storedScores[index];//倒数十个
+
+			var DateTime = '未知日期';
+			if( typeof(result.date) != 'undefined' &&  result.date!=0){
+				DateTime = DateService('m月d日H时i分',result.date);
+			}
+			else
+				$scope.labels.push('某日');
+			var theData ={'score':parseInt(result['total']),'img':result['img'],'date':DateTime};
+			$scope.images.push(theData);
+		} 	
+		
+		$scope.loaded+=limit;
+		$scope.$broadcast('scroll.infiniteScrollComplete');
+
+	};
+
+	$scope.$on('stateChangeSuccess', function() {
+		$scope.loadMore();
+	});
+	$scope.moreDataCanBeLoaded = function() {
+		return $scope.loaded < $scope.loadMax;
 	};
 
     $scope.$on('$ionicView.enter', function(event, data) {
@@ -72,12 +109,11 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 			$scope.labels.push('某日');
 		var theData ={'score':parseInt(result['total']),'img':result['img'],'date':DateTime};
 		$scope.images.unshift(theData);	
-		if($scope.data[0].length>10){
-			$scope.data[0].splice(0,1);
-			$scope.images.splice(0,1);
-		}
+		// if($scope.data[0].length>10){
+		// 	$scope.data[0].splice(0,1);
+		// 	$scope.images.splice(0,1);
+		// }
 			
-        console.log('Activating');
 		//save to local
 		var storedScores=[];
 		if(localStorage.getItem("scores")!=null)
@@ -92,7 +128,8 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 		$scope.count++;
 		window.localStorage['count']=$scope.count;
 		
-				
+		$scope.loaded++;
+		$scope.loadMax++;		
 		$scope.$apply();
     }
 

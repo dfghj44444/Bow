@@ -167,7 +167,7 @@ angular.module('app.routes', [])
       views: {
         'tab-dash': {
                templateUrl: 'templates/pageAddScoreByTouch.html',
-               controller: 'HomeCtrl'
+               controller: 'RecordNewCtrl2'
           }
       }
     })
@@ -177,7 +177,7 @@ angular.module('app.routes', [])
       views: {
         'tab-friends': {
           templateUrl: 'templates/pageNewScore.html',
-          controller: 'FriendsCtrl'
+          controller: 'NewScoreCtrl'
         }
       }
     })

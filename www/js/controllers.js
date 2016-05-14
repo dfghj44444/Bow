@@ -86,7 +86,7 @@ angular.module('app.controllers', ['ngCordova' ])
 
 })
 
-.controller('HomeCtrl',function($scope,$state){
+.controller('RecordNewCtrl2',function($scope,$state){
     $state.go("side-menu.tab.dash");
     	//上拉加载
     $scope.items = [];
