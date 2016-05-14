@@ -13,8 +13,8 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 		var storedScores = JSON.parse(localStorage.getItem("scores"));
 		var lastItem = storedScores[storedScores.length-1];
 		if(typeof(lastItem.date) != 'undefined' &&  lastItem.date!=0){
-			var deltaTime = myDate.getTime - lastItem.date*1000;
-			$scope.goneDays= parseInt(deltaTime/24/3.6);
+			var deltaTime = myDate.getTime()/1000 - lastItem.date;
+			$scope.gone= parseInt(deltaTime/24/3600);
 		}
 		
 		for (var i=0, len = storedScores.length; i < len && i<10; i++)
@@ -57,6 +57,8 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 			return;
 		if($stateParams.total<1 && typeof($stateParams.img) == "undefined")
 			return;
+			
+		$scope.gone = 0;//今天射了,清空
 		
 		var result = $stateParams;
 		//开始加内容
