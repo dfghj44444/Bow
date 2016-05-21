@@ -87,7 +87,7 @@ angular.module('app.controllers', ['ngCordova' ])
 })
 
 .controller('RecordNewCtrl2',function($scope,$state){
-    $state.go("side-menu.tab.dash");
+    //$state.go("side-menu.tab.dash");
     	//上拉加载
     $scope.items = [];
 	$scope.loadMore = function() {

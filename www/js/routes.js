@@ -152,7 +152,7 @@ angular.module('app.routes', [])
 	
     // // setup an abstract state for the tabs directive
     .state('side-menu.tab', {
-      url: "/side-menu/tab",
+      url: "/tab",
       views: {
         'side-menu': {
           templateUrl: "templates/pageAddScoreTab.html"
@@ -163,7 +163,7 @@ angular.module('app.routes', [])
     // Each tab has its own nav history stack:
 
     .state('side-menu.tab.dash', {
-      url: 'dash',
+      url: '/dash',
       views: {
         'tab-dash': {
                templateUrl: 'templates/pageAddScoreByTouch.html',
