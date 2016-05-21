@@ -18,14 +18,26 @@
 		  <img  ng-src="{{urlForImage(image['img'])}}" height="200px"/>
 		  <h2>{{image['date']}}</h2>
 		  <p>{{image['score']}}环</p>
+          <button class="button button-small button-energized">X环*6</button>
+          <button class="button button-small button-energized">10环*2</button>
+          <button class="button button-small button-energized">9环*4</button>
+          <button class="button  button-small button-assertive">8环*4</button>
+          <button class="button button-small button-stable" >总数：16支</button>
+          <button class="button  button-small button-stable">总分：148环</button>
+
+
+        
 		</a>
     </div>
        <ion-infinite-scroll  ng-if="moreDataCanBeLoaded()"  icon="ion-loading-c" distance="1%"  on-infinite="loadMoreData()">
        </ion-infinite-scroll>
     </ion-content>
+    
+    
       <ion-footer-bar align-title="center" class="bar bar-light">
             <div class="button-bar">
                 <a ui-sref="pageNewScore" id="page12-button8" ng-click="record()" style="font-weight:bold;border-radius:-8px -8px -8px -8px;" class="button button-balanced  button-block">记录一组</a>
             </div>
       </ion-footer-bar>
+      
 </ion-view>
