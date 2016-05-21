@@ -159,7 +159,15 @@ angular.module('app.routes', [])
         }
       },
     })
-
+    // // setup an abstract state for the tabs directive
+    .state('side-menu.canvas', {
+      url: "/canvas",
+      views: {
+        'side-menu': {
+          templateUrl: "templates/pageAddScoreByCanvas.html"
+        }
+      },
+    })
     // Each tab has its own nav history stack:
 
     .state('side-menu.tab.dash', {
