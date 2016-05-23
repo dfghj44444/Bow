@@ -107,7 +107,7 @@ angular.module('app.routes', [])
       views: {
         'side-menu': {
           templateUrl: 'templates/pageSet.html',
-		  controller:'pageSetCtrl'
+		      controller:'pageSetCtrl'
         }
       },
     })

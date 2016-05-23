@@ -26,9 +26,52 @@
                 <ion-item ui-sref="side-menu.pageAbout" menu-close="">关于作者</ion-item>
            
                 <ion-item ui-sref="side-menu.tab.dash" menu-close="">测试tab</ion-item>
-                
                 <ion-item ui-sref="side-menu.canvas" menu-close="">测试canvas</ion-item>
             </ion-list>
         </ion-content>
     </ion-side-menu>
+    
+     <ion-side-menu side="right" ng-controller="pageSetCtrl" >
+        <div class="card">
+            <div class="item item-text-wrap">
+                您一共已经射了{{arrowsCount}}支箭
+            </div>
+        </div>
+
+        <label class="item item-input item-select">
+            <div class="input-label">
+                成绩曲线量化一组箭数
+            </div>
+            <select ng-model="topicsDatatab"
+                ng-options="tab.value as tab.label for tab in tabs">
+            </select>
+        </label>
+
+        <label class="item item-input item-select">
+            <div class="input-label">
+                x环视为十环
+            </div>
+            <select ng-model="topicsDatatab2"
+                ng-options="tab.value as tab.label for tab in tabs2">
+            </select>
+        </label>
+        
+         <label class="item item-input item-select">
+            <div class="input-label">
+                箭道米数
+            </div>
+            <select ng-model="topicsDatatab3"
+                ng-options="tab.value as tab.label for tab in tabs3">
+            </select>
+        </label>
+        
+        <label class="item item-input item-select">
+            <div class="input-label">
+                弓箭种类
+            </div>
+            <select ng-model="topicsDatatab4"
+                ng-options="tab.value as tab.label for tab in tabs4">
+            </select>
+        </label>
+     </ion-side-menu>
 </ion-side-menus>
