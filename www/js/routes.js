@@ -164,7 +164,8 @@ angular.module('app.routes', [])
       url: "/canvas",
       views: {
         'side-menu': {
-          templateUrl: "templates/pageAddScoreByCanvas.html"
+          templateUrl: "templates/pageAddScoreByCanvas.html",
+          controller: 'RecordNewCtrl3'
         }
       },
     })
