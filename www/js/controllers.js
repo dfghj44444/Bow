@@ -37,6 +37,7 @@ angular.module('app.controllers', ['ngCordova' ])
                 value: '36',
                 label: '36支箭'
             }];
+            
     $scope.tabs2 = [{
                 value: '1',
                 label: 'X视为十环'
@@ -47,7 +48,43 @@ angular.module('app.controllers', ['ngCordova' ])
                 value: '3',
                 label: 'X视为特殊十环'
             }];
-    
+            
+    $scope.tabs3 = [{
+                value: '1',
+                label: '5米'
+            }, {
+                value: '2',
+                label: '10米'
+            }, {
+                value: '3',
+                label: '18米'
+            },{
+                value: '4',
+                label: '25米'
+            }, {
+                value: '5',
+                label: '50米'
+            }, {
+                value: '6',
+                label: '70米'
+            }];
+            
+    $scope.tabs4 = [{
+                value: '1',
+                label: '传统弓'
+            }, {
+                value: '2',
+                label: '竞技反曲'
+            }, {
+                value: '3',
+                label: '复合弓'
+            },{
+                value: '4',
+                label: '美猎'
+            }, {
+                value: '5',
+                label: '直拉弓'
+            }]; 
     // 默认值
     $scope.topicsDatatab='share';
     $scope.arrowsCount = 1000;//留待完善
@@ -87,7 +124,7 @@ angular.module('app.controllers', ['ngCordova' ])
 })
 
 .controller('RecordNewCtrl2',function($scope,$state){
-    //$state.go("side-menu.tab.dash");
+
     	//上拉加载
     $scope.items = [];
 	$scope.loadMore = function() {
