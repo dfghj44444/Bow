@@ -58,7 +58,7 @@
         
          <label class="item item-input item-select">
             <div class="input-label">
-                箭道米数
+                箭道长度
             </div>
             <select ng-model="topicsDatatab3"
                 ng-options="tab.value as tab.label for tab in tabs3">
@@ -69,8 +69,8 @@
             <div class="input-label">
                 弓箭种类
             </div>
-            <select ng-model="topicsDatatab4"
-                ng-options="tab.value as tab.label for tab in tabs4">
+            <select ng-options="option.name for option in data.availableOptions track by option.id"
+      ng-model="data.selectedOption">
             </select>
         </label>
      </ion-side-menu>

@@ -86,8 +86,19 @@ angular.module('app.controllers', ['ngCordova' ])
                 label: '直拉弓'
             }]; 
     // 默认值
-    $scope.topicsDatatab='share';
+    $scope.topicsDatatab={
+                value: '1',
+                label: '1支箭'
+            };
     $scope.arrowsCount = 1000;//留待完善
+    
+
+      {id: '1', name: '传统弓'},
+      {id: '2', name: '竞技反曲弓'},
+      {id: '3', name: '复合弓'},
+      {id: '4', name: '美猎'},
+      {id: '5', name: '直拉弓'},
+  
 })
 
 //视频录制  
