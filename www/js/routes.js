@@ -73,10 +73,14 @@ angular.module('app.routes', [])
       }
     })    
         
-    .state('pageNewScore', {
+    .state('side-menu.pageNewScore', {
       url: '/pageNewScore',
-      templateUrl: 'templates/pageNewScore.html',
-      controller:'NewScoreCtrl'
+      views: {
+              'side-menu': {
+              templateUrl: 'templates/pageNewScore.html',
+              controller:'NewScoreCtrl'
+              }
+        }
     })
  
     .state('side-menu.pageAbout', {
