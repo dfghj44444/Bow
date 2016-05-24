@@ -150,7 +150,6 @@ angular.module('app.routes', [])
       }
     })
 	
-    // // setup an abstract state for the tabs directive
     .state('side-menu.tab', {
       url: "/tab",
       views: {
@@ -159,7 +158,28 @@ angular.module('app.routes', [])
         }
       },
     })
-    // // setup an abstract state for the tabs directive
+
+    .state('side-menu.pageExam', {
+      url: "/pageExam",
+      views: {
+        'side-menu': {
+          templateUrl: "templates/pageExam.html",
+          //controller: 'RecordNewCtrl3'
+        }
+      },
+    })
+    
+
+    .state('side-menu.pageMedal', {
+      url: "/pageMedal",
+      views: {
+        'side-menu': {
+          templateUrl: "templates/pageMedal.html",
+          //controller: 'RecordNewCtrl3'
+        }
+      },
+    })
+
     .state('side-menu.canvas', {
       url: "/canvas",
       views: {

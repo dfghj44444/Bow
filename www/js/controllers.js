@@ -93,11 +93,14 @@ angular.module('app.controllers', ['ngCordova' ])
     $scope.arrowsCount = 1000;//留待完善
     
 
+    $scope.data = {availableOptions: [
       {id: '1', name: '传统弓'},
       {id: '2', name: '竞技反曲弓'},
       {id: '3', name: '复合弓'},
       {id: '4', name: '美猎'},
       {id: '5', name: '直拉弓'},
+    ],
+    selectedOption: {id: '2', name: '竞技反曲弓'}}; //This sets the default value of the select in the ui
   
 })
 
