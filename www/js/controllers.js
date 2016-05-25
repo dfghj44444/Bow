@@ -24,17 +24,16 @@ angular.module('app.controllers', ['ngCordova' ])
 
 })
 .controller('pageSetCtrl', function($scope) {
-    $scope.tabs = [{
-                value: '1',
-                label: '1支箭'
-            }, {
-                value: '6',
+
+    $scope.tabs = [{value :1,label:'1支箭'},
+             {
+                value: 6,
                 label: '6支箭'
             }, {
-                value: '12',
+                value: 12,
                 label: '12支箭'
             }, {
-                value: '36',
+                value: 36,
                 label: '36支箭'
             }];
             
@@ -85,11 +84,8 @@ angular.module('app.controllers', ['ngCordova' ])
                 value: '5',
                 label: '直拉弓'
             }]; 
-    // 默认值
-    $scope.topicsDatatab={
-                value: '1',
-                label: '1支箭'
-            };
+
+    $scope.topicsDatatab=1;
     $scope.arrowsCount = 1000;//留待完善
     
 
@@ -100,7 +96,30 @@ angular.module('app.controllers', ['ngCordova' ])
       {id: '4', name: '美猎'},
       {id: '5', name: '直拉弓'},
     ],
-    selectedOption: {id: '2', name: '竞技反曲弓'}}; //This sets the default value of the select in the ui
+    selectedOption: {id: '2', name: '竞技反曲弓'}
+    }; //This sets the default value of the select in the ui
+    
+    if(localStorage.getItem("setting")!=null)
+		storedScores = JSON.parse(window.localStorage.getItem("scores"));
+    else
+    {
+        var setting ={
+			'tejianshu':1,
+			'mishu':1,
+			'bazhi':1,
+			'gongzhong':1,
+			'shihuan':1
+        };
+    }
+
+    $scope.changeJianShu = function(selectedValue){
+        var e = document.getElementById("selJianShu");
+        var strUser = e.options[e.selectedIndex].value;
+        alert("哈哈");
+    };
+    // storedScores.push(result);
+
+    // window.localStorage.setItem('scores', JSON.stringify(storedScores));
   
 })
 
@@ -139,7 +158,7 @@ angular.module('app.controllers', ['ngCordova' ])
 
 .controller('RecordNewCtrl2',function($scope,$state){
 
-    	//上拉加载
+    //上拉加载
     $scope.items = [];
 	$scope.loadMore = function() {
 		$http.get('/more-items').success(function(items) {

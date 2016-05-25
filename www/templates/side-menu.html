@@ -25,7 +25,7 @@
                 <ion-item ui-sref="side-menu.pageExam" menu-close="">考试模式</ion-item>
                 <ion-item ui-sref="side-menu.pageMedal" menu-close="">我的成就</ion-item>
                 <ion-item ui-sref="side-menu.pageAbout" menu-close="">关于作者</ion-item>
-           
+                <ion-item ui-sref="side-menu.pageSet" menu-close="">设置</ion-item>
                 <ion-item ui-sref="side-menu.tab.dash" menu-close="">测试tab</ion-item>
                 <ion-item ui-sref="side-menu.canvas" menu-close="">测试canvas</ion-item>
             </ion-list>
@@ -43,8 +43,8 @@
             <div class="input-label">
                 成绩曲线量化一组箭数
             </div>
-            <select ng-model="topicsDatatab"
-                ng-options="tab.value as tab.label for tab in tabs">
+            <select  id="selJianShu"    ng-Model="topicsDatatab" 
+                ng-options="tab.value as tab.label for tab in tabs"  ng-change="changeJianShu(topicsDatatab)">
             </select>
         </label>
 
@@ -74,5 +74,6 @@
       ng-model="data.selectedOption">
             </select>
         </label>
+        
      </ion-side-menu>
 </ion-side-menus>

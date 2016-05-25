@@ -13,7 +13,7 @@
         成绩曲线量化一组箭数
         </div>
         <select ng-model="topicsDatatab"
-            ng-options="tab.value as tab.label for tab in tabs">
+            ng-options="tab.value as tab.label for tab in tabs" ng-change="changeJianShu(topicsDatatab)">
         </select>
     </label>
 
