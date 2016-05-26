@@ -1,5 +1,5 @@
 <ion-view title="图形计箭">
-    <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <ion-content overflow-scroll="false" padding="true" class="has-header">
 <ion-scroll>
 <canvas id="myCanvas" style=" height: 100%;width: 100%;margin: 0;padding: 0;display: block;" ng-mousedown="downEvent($event)"
 on-touch="downEvent($event)"
@@ -8,7 +8,7 @@ on-drag="dragEvent($event)"
 ng-mouseup="upEvent($event)"
 on-release="upEvent($event)" >
 </canvas >  
-</ion-scroll>
+</ion-scroll >
     <ion-footer-bar align-title="center" class="bar bar-light">
         <div class="button-bar">
             <button id="page9-button4" type="button" style="font-weight:bold;border-radius:-8px -8px -8px -8px;" class="button button-assertive button-block"
