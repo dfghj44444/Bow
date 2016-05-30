@@ -70,19 +70,13 @@ angular.module('app.controllers', ['ngCordova' ])
             
     $scope.tabs4 = [{
                 value: '1',
-                label: '传统弓'
+                label: '60全靶'
             }, {
                 value: '2',
-                label: '竞技反曲'
+                label: '60半靶'
             }, {
                 value: '3',
-                label: '复合弓'
-            },{
-                value: '4',
-                label: '美猎'
-            }, {
-                value: '5',
-                label: '直拉弓'
+                label: '三联靶'
             }]; 
 
     $scope.topicsDatatab=1;
