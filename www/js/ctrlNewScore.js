@@ -80,6 +80,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		}
 		if(sum>0){
 			$scope.totalScore = sum;
+			document.getElementById('ctrlInputScore').value = sum;//更新输入框
 		}
     };
             
