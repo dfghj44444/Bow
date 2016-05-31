@@ -67,6 +67,7 @@
     <icon src="resources\ios\icon\icon-50@2x.png" width="100" height="100"/>
     <icon src="resources\ios\icon\icon-60.png" width="60" height="60"/>
     <icon src="resources\ios\icon\icon-60@2x.png" width="120" height="120"/>
+	<icon src="resources\ios\icon\icon-120.png" width="120" height="120"/>
     <icon src="resources\ios\icon\icon-60@3x.png" width="180" height="180"/>
     <icon src="resources\ios\icon\icon-72.png" width="72" height="72"/>
     <icon src="resources\ios\icon\icon-72@2x.png" width="144" height="144"/>
@@ -87,24 +88,7 @@
     <splash src="resources\ios\splash\Default@2x~iphone.png" width="640" height="960"/>
     <splash src="resources\ios\splash\Default~iphone.png" width="320" height="480"/>
   </platform>
-  <gap:plugin name="org.apache.cordova.battery-status"/>
-  <gap:plugin name="org.apache.cordova.camera"/>
-  <gap:plugin name="org.apache.cordova.media-capture"/>
-  <gap:plugin name="org.apache.cordova.console"/>
-  <gap:plugin name="org.apache.cordova.contacts"/>
-  <gap:plugin name="org.apache.cordova.device"/>
-  <gap:plugin name="org.apache.cordova.device-motion"/>
-  <gap:plugin name="org.apache.cordova.device-orientation"/>
-  <gap:plugin name="org.apache.cordova.dialogs"/>
-  <gap:plugin name="org.apache.cordova.file"/>
-  <gap:plugin name="org.apache.cordova.file-transfer"/>
-  <gap:plugin name="org.apache.cordova.geolocation"/>
-  <gap:plugin name="org.apache.cordova.globalization"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser"/>
-  <gap:plugin name="org.apache.cordova.media"/>
-  <gap:plugin name="org.apache.cordova.network-information"/>
-  <gap:plugin name="org.apache.cordova.splashscreen"/>
-  <gap:plugin name="org.apache.cordova.vibration"/>
+
   <plugin name="cordova-plugin-photokandy-video-thumbnail" spec="~2.1.0"/>
   <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
 </widget>

@@ -25,12 +25,12 @@
     "ios",
     {
       "platform": "android",
-      "version": "",
+      "version": "0.3",
       "locator": "android"
     },
     {
       "platform": "ios",
-      "version": "",
+      "version": "0.3",
       "locator": "ios"
     }
   ]
