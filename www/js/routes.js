@@ -126,6 +126,16 @@ angular.module('app.routes', [])
       },
     })
     
+    .state('side-menu.pageGraduation', {
+      url: '/pageGraduation',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/pageGraduation.html',
+		      controller:'pageGraduationCtrl'
+        }
+      },
+    })
+    
     .state('side-menu.day1',{
       url: '/day1',
       views: {

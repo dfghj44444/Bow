@@ -1,0 +1,59 @@
+<ion-view title="刻度记录">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+    
+	<div   class="list animated infinite tada" ng-repeat="iter in graduations">
+		<div class="item  item-body" >
+		  <!--<img  ng-src="{{urlForImage(iter['img'])}}" height="200px"/>-->
+		  <!--<h2>{{image['date']}}</h2>-->
+		  <div class="row">
+              <div class="col col-33">箭道长度:{{iter.d}}</div>
+              <div class="col col-67">弓和瞄:{{iter.type}}</div>
+
+          </div>
+          <div class="row">
+              <div class="col col-33">竖:{{iter.y}}</div>
+              <div class="col col-33">横:{{iter.x}}</div>
+              <div class="col col-33">伸出:{{iter.z}}</div>
+          </div>
+          <div class="row">
+             <div class="col "> 备注:{{iter.oter}}</div>
+          </div>
+		</div>
+    </div>
+
+  
+  
+    <div class="card">
+
+        <div class="item item-body item-input-inset">
+                <div class="col col-50">
+                    <input ng-model="Info.y_input" type="text" placeholder="在此输入纵尺刻度">
+                </div>
+                <div class="col col-50">
+                    <input ng-model="Info.x_input" type="text" placeholder="在此输入横尺刻度">
+                </div>
+        </div>
+        <div class="item item-body item-input-inset">
+            <div class="col col-33">
+                <input type="text"ng-model="Info.d_input" placeholder="在此输入箭道长度">
+            </div>
+            <div class="col col-33">
+                <input type="text" ng-model="Info.z_input" placeholder="伸出长度(可不填)">
+            </div>
+             <div class="col col-33">
+                <input type="text" ng-model="Info.type_input" placeholder="在此输入弓和瞄的信息">
+            </div>
+        </div>
+        
+         <div class="item item-body item-input-inset">
+         
+         <input type="text" ng-model="Info.other_input" placeholder="在此输入备注">
+ 
+        </div>
+            <div class="button-bar">
+                <a ng-click="AddGraduation(Info)" id="btn-addGraducation" style="font-weight:bold;border-radius:-8px -8px -8px -8px;" class="button button-balanced  button-block">添加记录</a>
+            </div>
+
+        </div>
+          </ion-content>
+</ion-view>

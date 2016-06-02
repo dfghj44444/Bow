@@ -150,6 +150,42 @@ angular.module('app.controllers', ['ngCordova' ])
 
 })
 
+.controller('pageGraduationCtrl', function($scope) {
+    $scope.graduations = [];  
+    $scope.x_input="";
+    $scope.y_input="";
+    $scope.z_input="";
+    $scope.type_input="";
+    $scope.d_input="";
+    $scope.other_input="";
+    $scope.Info = {};
+	if(localStorage.getItem("graduations")!=null)
+	{
+		var storedgraduations = JSON.parse(localStorage.getItem("graduations"));
+	
+		for (var i=0 ; i< storedgraduations.length ; i++)
+		{ 
+			var iter = storedgraduations[i];//倒数十个
+            $scope.graduations.push(iter);
+		} 	
+	}
+    
+    $scope.AddGraduation=function(infodata)
+    {
+        var newgrad= {
+            "x":infodata.x_input,
+            "y":infodata.y_input,
+            "z":infodata.z_input,
+            "d":infodata.d_input,
+            "type":infodata.type_input,
+            "other":infodata.other_input
+        }
+        $scope.graduations.push(newgrad);
+        window.localStorage.setItem('graduations', JSON.stringify($scope.graduations));
+       
+    }
+})
+
 .controller('RecordNewCtrl2',function($scope,$state){
 
     //上拉加载

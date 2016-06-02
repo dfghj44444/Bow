@@ -1,3 +1,8 @@
  #vc { display:table; background-color:#fefefe; width:98%;  overflow:hidden; margin-left:5px; _position:relative; }
-     #vci { vertical-align:middle; display:table-cell; text-align:center; _position:absolute; _top:50%; _left:50%; }
-     #content { color:#fff; border:1px solid #fff; display:inline-block; _position:relative; _top:-50%; _left:-50%; }
+ #vci { vertical-align:middle; display:table-cell; text-align:center; _position:absolute; _top:50%; _left:50%; }
+ #content { color:#fff; border:1px solid #fff; display:inline-block; _position:relative; _top:-50%; _left:-50%; }
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
