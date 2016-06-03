@@ -1,4 +1,4 @@
-angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera,DateService) {
+angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera,DateService,$ionicHistory) {
 
 	$scope.items = [
 	{ id: '10',volume:'0' },
@@ -56,8 +56,8 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		$state.go('side-menu.pageRecords',resultObject);
     }
 	$scope.recordCancel = function() {	
+		$ionicHistory.backView();
 
-		$state.go('side-menu.pageRecords',{'total':0});
 	}
     
     $scope.$on('$ionicView.enter', function() {
