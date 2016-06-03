@@ -1,8 +1,8 @@
 <ion-view title="刻度记录">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
     
-	<div   class="list animated  bounceInRight" ng-repeat="iter in graduations">
-		<div class="item  item-body" >
+	<ion-list   class="list animated  bounceInRight" ng-repeat="iter in graduations" can-swipe="true">
+		<ion-item >
 		  <!--<img  ng-src="{{urlForImage(iter['img'])}}" height="200px"/>-->
 		  <!--<h2>{{image['date']}}</h2>-->
 		  <div class="row">
@@ -18,8 +18,10 @@
           <div class="row">
              <div class="col "> 备注:{{iter.oter}}</div>
           </div>
-		</div>
-    </div>
+          <ion-option-button class="button-assertive icon ion-trash-a"></ion-option-button>
+
+		</ion-item>
+    </ion-list>
 
   
   
