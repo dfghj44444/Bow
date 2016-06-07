@@ -52,12 +52,13 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			}
         }  
 		resultObject.variance = variance/arrows;
+
+		$ionicHistory.backView().stateParams = resultObject;
+		$ionicHistory.goBack();
 		
-		$state.go('side-menu.pageRecords',resultObject);
     }
 	$scope.recordCancel = function() {	
 		$ionicHistory.backView();
-
 	}
     
     $scope.$on('$ionicView.enter', function() {
