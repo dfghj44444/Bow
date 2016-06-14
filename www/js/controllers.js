@@ -152,12 +152,7 @@ angular.module('app.controllers', ['ngCordova' ])
 
 .controller('pageGraduationCtrl', function($scope) {
     $scope.graduations = [];  
-    $scope.x_input="";
-    $scope.y_input="";
-    $scope.z_input="";
-    $scope.type_input="";
-    $scope.d_input="";
-    $scope.other_input="";
+
     $scope.Info = {};
 	if(localStorage.getItem("graduations")!=null)
 	{
@@ -182,12 +177,11 @@ angular.module('app.controllers', ['ngCordova' ])
         }
         $scope.graduations.push(newgrad);
         window.localStorage.setItem('graduations', JSON.stringify($scope.graduations));
-       
+           $scope.Info = {};//清空
     }
 
     $scope.delete=function(index)
     {
-
         $scope.graduations.splice(index,1);
         window.localStorage.setItem('graduations', JSON.stringify($scope.graduations));
     }
