@@ -188,7 +188,7 @@ angular.module('app.controllers', ['ngCordova' ])
     $scope.delete=function(index)
     {
 
-        $scope.graduations.splice(index);
+        $scope.graduations.splice(index,1);
         window.localStorage.setItem('graduations', JSON.stringify($scope.graduations));
     }
 })
