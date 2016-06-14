@@ -18,7 +18,7 @@
           <div class="row">
              <div class="col "> 备注:{{iter.oter}}</div>
           </div>
-          <ion-option-button class="button-assertive icon ion-trash-a"></ion-option-button>
+          <ion-option-button class="button-assertive icon ion-trash-a" ng-click="delete($index)"></ion-option-button>
 
 		</ion-item>
     </ion-list>
@@ -37,7 +37,7 @@
         </div>
         <div class="item item-body item-input-inset">
             <div class="col col-33">
-                <input type="text"ng-model="Info.d_input" placeholder="在此输入箭道长度">
+                <input type="text" ng-model="Info.d_input" placeholder="在此输入箭道长度">
             </div>
             <div class="col col-33">
                 <input type="text" ng-model="Info.z_input" placeholder="伸出长度(可不填)">

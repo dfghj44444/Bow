@@ -184,6 +184,13 @@ angular.module('app.controllers', ['ngCordova' ])
         window.localStorage.setItem('graduations', JSON.stringify($scope.graduations));
        
     }
+
+    $scope.delete=function(index)
+    {
+
+        $scope.graduations.splice(index);
+        window.localStorage.setItem('graduations', JSON.stringify($scope.graduations));
+    }
 })
 
 .controller('RecordNewCtrl2',function($scope,$state){
