@@ -124,9 +124,9 @@ angular.module('app.controllers', ['ngCordova' ])
        DataService.setDefaultPaper($scope.tabs4[$scope.topicP]);
    }
 
-    $scope.updateDistance = function (){
-        DataService.setDefaultDistance($scope.tabs3[$scope.topicD]);
-    }
+   $scope.updateDistance = function (){
+       DataService.setDefaultDistance($scope.tabs3[$scope.topicD]);
+   }
 
     $scope.updateBowType = function (){
         DataService.setBowType($scope.data.selectedOption.name);
