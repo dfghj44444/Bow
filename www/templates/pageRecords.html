@@ -17,23 +17,28 @@
 		<a class="item item-thumbnail-left" href="#">
 		  <img  ng-src="{{urlForImage(image['img'])}}" height="200px"/>
 		  <h2>{{image['date']}}</h2>
-		  <p>{{image['score']}}环，25米，反曲</p>
-          <button class="button button-small button-energized">X环*6</button>
-          <button class="button button-small button-energized">10环*2</button>
-          <button class="button button-small button-energized">9环*4</button>
-          <button class="button  button-small button-assertive">8环*4</button>
-          <button class="button button-small button-stable" >总数：16支</button>
-          <button class="button  button-small button-stable">总分：148环</button>
+		  <p>{{image['score']}}环，{{image.d}}米，{{image.type}}</p>
+          <button ng-if = "image.x>0" class="button button-small button-energized">X环*{{image.x}}</button>
+          <button ng-if = "image.ten>0" class="button button-small button-energized">10环*{{image.ten}}</button>
+          <button ng-if = "image.nine>0" class="button button-small button-energized">9环*{{image.nine}}</button>
+          <button ng-if = "image.eight>0" class="button button-small button-assertive">8环*{{image.eight}}</button>
+          <button ng-if = "image.seven>0" class="button button-small button-energized">10环*{{image.seven}}</button>
+          <button ng-if = "image.six>0" class="button button-small button-energized">9环*{{image.six}}</button>
+          <button ng-if = "image.five>0" class="button button-small button-assertive">8环*{{image.five}}</button>
+          <button ng-if = "image.four>0" class="button button-small button-energized">10环*{{image.four}}</button>
+          <button ng-if = "image.three>0" class="button button-small button-energized">9环*{{image.three}}</button>
+          <button ng-if = "image.two>0" class="button button-small button-assertive">8环*{{image.two}}</button>
+          <button ng-if = "image.one>0" class="button button-small button-assertive">8环*{{image.one}}</button>
+          <button ng-if = "image.zero>0" class="button button-small button-assertive">8环*{{image.zero}}</button>
+          <button class="button button-small button-stable" >总数：{{image.count}}支</button>
+          <button class="button  button-small button-stable">总分：{{image.score}}环</button>
 
-
-        
 		</a>
     </div>
        <ion-infinite-scroll  ng-if="moreDataCanBeLoaded()"  icon="ion-loading-c" distance="1%"  on-infinite="loadMoreData()">
        </ion-infinite-scroll>
     </ion-content>
-    
-    
+
       <ion-footer-bar align-title="center" class="bar bar-light">
             <div class="button-bar">
                 <a ui-sref="side-menu.pageNewScore" id="page12-button8"  style="font-weight:bold;border-radius:-8px -8px -8px -8px;" class="button button-balanced  button-block">记录一组</a>

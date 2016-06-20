@@ -83,8 +83,7 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 		return $scope.loaded < $scope.loadMax;
 	};
 
-    $scope.$on('$ionicView.enter', function(event, data) {
-		
+    $scope.$on('$ionicView.enter', function(event, data) {	
         activate(data.stateParams);
     });
 	

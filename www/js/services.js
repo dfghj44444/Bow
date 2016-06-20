@@ -33,6 +33,20 @@ angular.module('app.services', [])
 
 }])
 
+.service('DataService', [function(){
+    function getDefaultDistance() {
+        return window.localStorage['distance']||10;
+    }
+
+    function getDefaultArrowNubmer() {
+        return window.localStorage['arrowNumber']||12;
+    }
+
+    function getDefaultBowType() {
+        return window.localStorage['bowType']||'';
+    }
+}])
+
 .service('VideoService', function($q) {
     var deferred = $q.defer();
     var promise = deferred.promise;

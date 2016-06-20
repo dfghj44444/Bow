@@ -1,4 +1,4 @@
-angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera,DateService,$ionicHistory) {
+angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera,DateService,DataService,$ionicHistory) {
 
 	$scope.items = [
 	{ id: '10',volume:'0' },
@@ -13,6 +13,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 	{ id: '1',volume:'0' },
 	{ id: '0',volume:'0' }
 	];
+	var myDate = new Date();
 	//记录一组新
     $scope.recordNew = function() {
 		var resultObject={
@@ -27,16 +28,14 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			'two':$scope.items[8].volume,
 			'one':$scope.items[9].volume,
 			'zero':$scope.items[10].volume,
-			'total':$scope.totalScore|0,
+			'total':$scope.totalScore|0,//总分
             'img':$scope.theImage,
-            'variance':'',
-			'date':0,
-            
+            'variance':0,//方差
+			'count':0,//箭数总计
+			'date':myDate.getTime()/1000,
+			'distance':DataService.getDefaultDistance(),
+            'type':DataService.getDefaultBowType()//弓种
         };
-		//记录时间	
-		var myDate = new Date();
-		resultObject.date = myDate.getTime()/1000;
-		//alert(DateService('Y-m-d H:i:s',resultObject.time));
 
 		//平均值和方差
 		var arrows = 0;
