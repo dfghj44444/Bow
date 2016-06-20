@@ -73,20 +73,20 @@ angular.module('app.controllers', ['ngCordova' ])
             }];
             
     $scope.tabs4 = [{
-                index: 0,
+                value: 0,
                 label: '60全靶'
             }, {
-                index: 1,
+                value: 1,
                 label: '60半靶'
             }, {
-                index: 2,
+                value: 2,
                 label: '三联靶'
             }]; 
 
     $scope.topicsDatatab=1;
     $scope.arrowsCount = 1000;//留待完善
 
-    $scope.topicP =0;
+    $scope.topicP = 0;
     $scope.topicD = 0;
 
     $scope.data = {availableOptions: [
