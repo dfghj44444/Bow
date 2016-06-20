@@ -53,7 +53,7 @@
             <div class="input-label">
                 x环视为十环
             </div>
-            <select ng-model="topicsDatatab2"
+            <select ng-model="topicX"
                 ng-options="tab.value as tab.label for tab in tabs2">
             </select>
         </label>
@@ -62,7 +62,7 @@
             <div class="input-label">
                 箭道长度
             </div>
-            <select ng-model="topicsDatatab3"
+            <select ng-model="topicD" ng-change="updateDistance()"
                 ng-options="tab.value as tab.label for tab in tabs3">
             </select>
         </label>
@@ -71,7 +71,7 @@
             <div class="input-label">
                 靶纸种类
             </div>
-            <select ng-model="topicsDatatab4"
+            <select ng-model="topicP" ng-change="updatePaper()"
                 ng-options="tab.value as tab.label for tab in tabs4">
             </select>
         </label>
@@ -81,7 +81,7 @@
                 弓箭种类
             </div>
             <select ng-options="option.name for option in data.availableOptions track by option.id"
-      ng-model="data.selectedOption">
+      ng-model="data.selectedOption"  ng-change="updateBowType()">
             </select>
         </label>
         

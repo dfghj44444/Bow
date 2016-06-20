@@ -38,12 +38,32 @@ angular.module('app.services', [])
         return window.localStorage['distance']||10;
     }
 
+    function setDefaultDistance(param) {
+        return window.localStorage['distance']=param;
+    }
+
     function getDefaultArrowNubmer() {
         return window.localStorage['arrowNumber']||12;
     }
 
+    function setDefaultArrowNubmer(param) {
+        return window.localStorage['arrowNumber']=param;
+    }
+
     function getDefaultBowType() {
         return window.localStorage['bowType']||'';
+    }
+
+    function setDefaultBowType(param) {
+        return window.localStorage['bowType']=param;
+    }
+
+    function setDefaultpaper(param) {
+        return window.localStorage['paper']=param;
+    }
+
+    function getDefaultpaper(param) {
+        return window.localStorage['paper']||'';
     }
 }])
 

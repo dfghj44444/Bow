@@ -23,7 +23,7 @@ angular.module('app.controllers', ['ngCordova' ])
 .controller('page7Ctrl', function($scope) {
 
 })
-.controller('pageSetCtrl', function($scope) {
+.controller('pageSetCtrl', function($scope,DataService) {
 
     $scope.tabs = [{value :1,label:'1支箭'},
              {
@@ -48,40 +48,46 @@ angular.module('app.controllers', ['ngCordova' ])
                 label: 'X视为特殊十环'
             }];
             
-    $scope.tabs3 = [{
-                value: '1',
+    $scope.tabs3 = [
+                {
+                value: 0,
+                label: '不固定长'
+            },{
+                value: 1,
                 label: '5米'
             }, {
-                value: '2',
+                value: 2,
                 label: '10米'
             }, {
-                value: '3',
+                value: 3,
                 label: '18米'
             },{
-                value: '4',
+                value: 4,
                 label: '25米'
             }, {
-                value: '5',
+                value: 5,
                 label: '50米'
             }, {
-                value: '6',
+                value: 6,
                 label: '70米'
             }];
             
     $scope.tabs4 = [{
-                value: '1',
+                index: 0,
                 label: '60全靶'
             }, {
-                value: '2',
+                index: 1,
                 label: '60半靶'
             }, {
-                value: '3',
+                index: 2,
                 label: '三联靶'
             }]; 
 
     $scope.topicsDatatab=1;
     $scope.arrowsCount = 1000;//留待完善
-    
+
+    $scope.topicP =0;
+    $scope.topicD = 0;
 
     $scope.data = {availableOptions: [
       {id: '1', name: '传统弓'},
@@ -109,12 +115,22 @@ angular.module('app.controllers', ['ngCordova' ])
     $scope.changeJianShu = function(selectedValue){
         var e = document.getElementById("selJianShu");
         var strUser = e.options[e.selectedIndex].value;
-        alert("哈哈");
+        
     };
     // storedScores.push(result);
 
     // window.localStorage.setItem('scores', JSON.stringify(storedScores));
-  
+   $scope.updatePaper = function() {
+       DataService.setDefaultPaper($scope.tabs4[$scope.topicP]);
+   }
+
+    $scope.updateDistance = function (){
+        DataService.setDefaultDistance($scope.tabs3[$scope.topicD]);
+    }
+
+    $scope.updateBowType = function (){
+        DataService.setBowType($scope.data.selectedOption.name);
+    }
 })
 
 //视频录制  
