@@ -36,7 +36,8 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			'distance':DataService.getDefaultDistance(),
             'type':DataService.getDefaultBowType()//弓种
         };
-
+		//calccount
+		resultObject.count = $scope.items.reduce(function (a, b) {return a + b;}, 0);
 		//平均值和方差
 		var arrows = 0;
 
