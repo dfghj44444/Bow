@@ -34,36 +34,38 @@ angular.module('app.services', [])
 }])
 
 .service('DataService', [function(){
-    function getDefaultDistance() {
-        return window.localStorage['distance']||10;
-    }
+    return{
+        getDefaultDistance :function () {
+            return window.localStorage['distance']||10;
+        },
 
-    function setDefaultDistance(param) {
-        return window.localStorage['distance']=param;
-    }
+         setDefaultDistance : function(param) {
+            return window.localStorage['distance']=param;
+        },
 
-    function getDefaultArrowNubmer() {
-        return window.localStorage['arrowNumber']||12;
-    }
+        getDefaultArrowNubmer: function () {
+            return window.localStorage['arrowNumber']||12;
+        },
 
-    function setDefaultArrowNubmer(param) {
-        return window.localStorage['arrowNumber']=param;
-    }
+        setDefaultArrowNubmer: function (param) {
+            return window.localStorage['arrowNumber']=param;
+        },
 
-    function getDefaultBowType() {
-        return window.localStorage['bowType']||'';
-    }
+        getDefaultBowType: function () {
+            return window.localStorage['bowType']||'';
+        },
 
-    function setDefaultBowType(param) {
-        return window.localStorage['bowType']=param;
-    }
+        setDefaultBowType: function (param) {
+            return window.localStorage['bowType']=param;
+        },
 
-    function setDefaultpaper(param) {
-        return window.localStorage['paper']=param;
-    }
+        setDefaultpaper:function (param) {
+            return window.localStorage['paper']=param;
+        },
 
-    function getDefaultpaper(param) {
-        return window.localStorage['paper']||'';
+        getDefaultpaper:function (param) {
+            return window.localStorage['paper']||'';
+        }
     }
 }])
 
