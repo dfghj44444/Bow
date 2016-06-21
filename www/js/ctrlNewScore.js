@@ -52,9 +52,10 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
         }  
 		resultObject.variance = variance/arrows;
 
+	
 		$ionicHistory.backView().stateParams = resultObject;
+		$ionicHistory.nextViewOptions({   disableBack: true });
 		$ionicHistory.goBack();
-		
     }
 	$scope.recordCancel = function() {	
 		$ionicHistory.goBack();
@@ -67,7 +68,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		document.getElementById('ctrlInputScore').value = '';
 		for( x in $scope.items)
 			$scope.items[x].volume=0;; //don't forget to add the base
-		
+
         $scope.$apply();
     });
 
