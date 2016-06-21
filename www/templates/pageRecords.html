@@ -17,7 +17,7 @@
 		<a class="item item-thumbnail-left" href="#">
 		  <img  ng-src="{{urlForImage(image['img'])}}" height="200px"/>
 		  <h2>{{image['date']}}</h2>
-		  <p>{{image['score']}}环，{{image.d}}米，{{image.type}}</p>
+		  <p>{{image['score']}}环，{{image.d}}米{{image.p}}，{{image.type}}</p>
           <button ng-if = "image.x>0" class="button button-small button-energized">X环*{{image.x}}</button>
           <button ng-if = "image.ten>0" class="button button-small button-energized">10环*{{image.ten}}</button>
           <button ng-if = "image.nine>0" class="button button-small button-energized">9环*{{image.nine}}</button>

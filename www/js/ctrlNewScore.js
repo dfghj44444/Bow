@@ -41,7 +41,8 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			'count':0,//箭数总计
 			'date':myDate.getTime()/1000,
 			'distance':DataService.getDefaultDistance(),
-            'type':DataService.getDefaultBowType()//弓种
+            'type':DataService.getDefaultBowType(),//弓种
+            'paper':DataService.getDefaultPaper()
         };
 		var test1 = DataService.getDefaultDistance();
 		var test2 = DataService.getDefaultBowType();

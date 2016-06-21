@@ -57,11 +57,11 @@ angular.module('app.services', [])
              window.localStorage['bowType']=param;
         },
 
-        getDefaultpaper:function () {
+        getDefaultPaper:function () {
             return window.localStorage['paper']||'';
         },
-        setDefaultpaper:function (param) {
-            return window.localStorage['paper']=param;
+        setDefaultPaper:function (param) {
+            window.localStorage['paper']=param;
         },
 
     }

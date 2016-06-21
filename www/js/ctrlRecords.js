@@ -43,7 +43,7 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 				count:result.count,
 				type:result.type||'',
 				d:result.distance,
-
+                p:result.paper
 			};
 			$scope.images.unshift(theData);
 		} 	
@@ -121,6 +121,7 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 			count:result.count,
 			type:result.type||'',
 			d:result.distance,
+            p:result.paper
 		};
 		$scope.images.unshift(theData);	
 		// if($scope.data[0].length>10){
