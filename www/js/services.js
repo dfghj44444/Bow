@@ -39,7 +39,7 @@ angular.module('app.services', [])
         };
     return{
         getDefaultDistance :function () {
-            return alert((window.localStorage['distance'])) ;
+            return (window.localStorage['distance']) ;
         },
         setDefaultDistance : setDefaultDistance,
 

@@ -43,7 +43,18 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 				count:result.count,
 				type:result.type||'',
 				d:result.distance,
-                p:result.paper
+                p:result.paper,
+                                             ten:result.ten,
+                                             nine:result.nine,
+                                             eight:result.eight,
+                                             seven:result.seven,
+                                             six:result.six,
+                                             five:result.five,
+                                             four:result.four,
+                                             three:result.three,
+                                             two:result.two,
+                                             one:result.one,
+                                             zero:result.zero
 			};
 			$scope.images.unshift(theData);
 		} 	
@@ -121,7 +132,18 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 			count:result.count,
 			type:result.type||'',
 			d:result.distance,
-            p:result.paper
+            p:result.paper,
+            ten:result.ten,
+            nine:result.nine,
+            eight:result.eight,
+            seven:result.seven,
+            six:result.six,
+            five:result.five,
+            four:result.four,
+            three:result.three,
+            two:result.two,
+            one:result.one,
+            zero:result.zero
 		};
 		$scope.images.unshift(theData);	
 		// if($scope.data[0].length>10){
