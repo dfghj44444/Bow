@@ -57,7 +57,7 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 		
     }
 	$scope.recordCancel = function() {	
-		$ionicHistory.backView();
+		$ionicHistory.goBack();
 	}
     
     $scope.$on('$ionicView.enter', function() {
