@@ -34,38 +34,36 @@ angular.module('app.services', [])
 }])
 
 .service('DataService', [function(){
+    var setDefaultDistance = function(param) {
+             window.localStorage['distance']= (param) ;
+        };
     return{
         getDefaultDistance :function () {
-            return window.localStorage['distance']||10;
+            return alert((window.localStorage['distance'])) ;
         },
-
-         setDefaultDistance : function(param) {
-            return window.localStorage['distance']=param;
-        },
+        setDefaultDistance : setDefaultDistance,
 
         getDefaultArrowNubmer: function () {
             return window.localStorage['arrowNumber']||12;
         },
-
         setDefaultArrowNubmer: function (param) {
-            return window.localStorage['arrowNumber']=param;
+             window.localStorage['arrowNumber']=param;
         },
 
         getDefaultBowType: function () {
             return window.localStorage['bowType']||'';
         },
-
-        setDefaultBowType: function (param) {
-            return window.localStorage['bowType']=param;
+        setBowType: function (param) {
+             window.localStorage['bowType']=param;
         },
 
+        getDefaultpaper:function () {
+            return window.localStorage['paper']||'';
+        },
         setDefaultpaper:function (param) {
             return window.localStorage['paper']=param;
         },
 
-        getDefaultpaper:function (param) {
-            return window.localStorage['paper']||'';
-        }
     }
 }])
 

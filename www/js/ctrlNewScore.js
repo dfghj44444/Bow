@@ -1,18 +1,25 @@
 angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$state,$cordovaCamera,DateService,DataService,$ionicHistory) {
 
 	$scope.items = [
-	{ id: '10',volume:'0' },
-	{ id: '9',volume:'0' },
-	{ id: '8',volume:'0' },
-	{ id: '7',volume:'0' },
-	{ id: '6',volume:'0' },
-	{ id: '5',volume:'0' },
-	{ id: '4',volume:'0' },
-	{ id: '3',volume:'0' },
-	{ id: '2',volume:'0' },
-	{ id: '1',volume:'0' },
-	{ id: '0',volume:'0' }
+	{ id: '10',volume:0 },
+	{ id: '9',volume:0 },
+	{ id: '8',volume:0 },
+	{ id: '7',volume:0 },
+	{ id: '6',volume:0 },
+	{ id: '5',volume:0 },
+	{ id: '4',volume:0 },
+	{ id: '3',volume:0 },
+	{ id: '2',volume:0 },
+	{ id: '1',volume:0 },
+	{ id: '0',volume:0 }
 	];
+	Array.prototype.sum = function (prop) {
+    var total = 0;
+    for ( var i = 0, _len = this.length; i < _len; i++ ) 
+        total += this[i][prop];
+    
+    return total;
+	}
 	var myDate = new Date();
 	//记录一组新
     $scope.recordNew = function() {
@@ -36,8 +43,12 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
 			'distance':DataService.getDefaultDistance(),
             'type':DataService.getDefaultBowType()//弓种
         };
+		var test1 = DataService.getDefaultDistance();
+		var test2 = DataService.getDefaultBowType();
 		//calccount
-		resultObject.count = $scope.items.reduce(function (a, b) {return a + b;}, 0);
+		resultObject.count = $scope.items.reduce( function(a, b){
+        return a + parseInt(b["volume"]);
+    }, 0);
 		//平均值和方差
 		var arrows = 0;
 

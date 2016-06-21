@@ -36,7 +36,15 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 			}
 			else
 				$scope.labels.push('某日');
-			var theData ={'score':parseInt(result['total']),'img':result['img'],'date':DateTime};
+			var theData ={
+				score:parseInt(result['total']),
+				img:result['img'],
+				date:DateTime,
+				count:result.count,
+				type:result.type||'',
+				d:result.distance,
+
+			};
 			$scope.images.unshift(theData);
 		} 	
 		$scope.loaded = limit;
@@ -106,7 +114,14 @@ angular.module('app.controllers').controller('pageRecordsCtrl', function($scope,
 		}
 		else
 			$scope.labels.push('某日');
-		var theData ={'score':parseInt(result['total']),'img':result['img'],'date':DateTime};
+		var theData ={
+			score:parseInt(result['total']),
+			img:result['img'],
+			date:DateTime,
+			count:result.count,
+			type:result.type||'',
+			d:result.distance,
+		};
 		$scope.images.unshift(theData);	
 		// if($scope.data[0].length>10){
 		// 	$scope.data[0].splice(0,1);

@@ -94,7 +94,7 @@ angular.module('app.routes', [])
     })
           
     .state('side-menu.pageRecords', {
-      url: '/pageRecords?ten&nine&eight&seven&six&five&four&three&two&one&zero&total&img&variance&date',
+      url: '/pageRecords?ten&nine&eight&seven&six&five&four&three&two&one&zero&total&img&variance&date&count&distance&type',
       cached:true,
 	  views: {
         'side-menu': {

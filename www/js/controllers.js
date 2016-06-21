@@ -121,11 +121,11 @@ angular.module('app.controllers', ['ngCordova' ])
 
     // window.localStorage.setItem('scores', JSON.stringify(storedScores));
    $scope.updatePaper = function() {
-       DataService.setDefaultPaper($scope.tabs4[$scope.topicP]);
+       DataService.setDefaultPaper($scope.tabs4[$scope.topicP].label);
    }
 
    $scope.updateDistance = function (){
-       DataService.setDefaultDistance($scope.tabs3[$scope.topicD]);
+       DataService.setDefaultDistance($scope.tabs3[$scope.topicD].label);
    }
 
     $scope.updateBowType = function (){
