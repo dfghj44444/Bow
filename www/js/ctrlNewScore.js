@@ -65,7 +65,10 @@ angular.module('app.controllers').controller('NewScoreCtrl', function($scope,$st
         }  
 		resultObject.variance = variance/arrows;
 
-	
+		var entryViewId = _.find($ionicHistory.viewHistory().views, {url : "/随便给个正确的url"});
+		if(entryViewId) 
+		$ionicHistory.backView(entryViewId);
+		//-----------------------我是分割线
 		$ionicHistory.backView().stateParams = resultObject;
 		$ionicHistory.nextViewOptions({   disableBack: true });
 		$ionicHistory.goBack();
