@@ -63,15 +63,15 @@ angular.module('app.routes', [])
       templateUrl: 'templates/pageScores3.html'
     })
     
-    .state('side-menu.pageVideo', {
-      url: '/pageVideo',
-      views: {
-        'side-menu': {
-          templateUrl: 'templates/pageVideo.html',
-          controller:'VideoCtrl'
-        }
-      }
-    })    
+    // .state('side-menu.pageVideo', {
+    //   url: '/pageVideo',
+    //   views: {
+    //     'side-menu': {
+    //       templateUrl: 'templates/pageVideo.html',
+    //       controller:'VideoCtrl'
+    //     }
+    //   }
+    // })    
         
     .state('side-menu.pageNewScore', {
       url: '/pageNewScore',
@@ -194,15 +194,15 @@ angular.module('app.routes', [])
       },
     })
 
-    .state('side-menu.canvas', {
-      url: "/canvas",
-      views: {
-        'side-menu': {
-          templateUrl: "templates/pageAddScoreByCanvas.html",
-          controller: 'RecordNewCtrl3'
-        }
-      },
-    })
+    // .state('side-menu.canvas', {//落地计件
+    //   url: "/canvas",
+    //   views: {
+    //     'side-menu': {
+    //       templateUrl: "templates/pageAddScoreByCanvas.html",
+    //       controller: 'RecordNewCtrl3'
+    //     }
+    //   },
+    // })
     // Each tab has its own nav history stack:
 
     .state('side-menu.tab.dash', {
