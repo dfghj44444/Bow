@@ -39,4 +39,3 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 \
 ## 相关仓库
 
 - 比赛成绩与淘汰赛：`xm_archery_match`
-- 成绩看板空壳：`archery-game-board`

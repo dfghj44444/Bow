@@ -5,6 +5,7 @@
 - 将原 `archery_game_list` 仓库并入本仓库的 `archery_game_list/`，作为后续 App 加载的赛事列表静态页。
 - 重写 README：说明十环 App 定位、目录结构和赛事列表用法；去掉 Ionic starter 模板说明。
 - 未拷贝 `game_list.zip`（与页面内容重复）。
+- 去掉对 `archery-game-board` 的引用（该仓库仅为 Ionic 空壳，已废弃）。
 
 ## 2016-09-27
 
